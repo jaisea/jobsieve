@@ -119,7 +119,7 @@ async function ensureServer() {
 
 function toast(body) {
   if (!cfg.notifications || !Notification.isSupported()) return;
-  const n = new Notification({ title: 'Job Hunt', body });
+  const n = new Notification({ title: 'jobsieve', body });
   n.on('click', showWindow);
   n.show();
 }
@@ -154,7 +154,7 @@ function createWindow() {
   const w = new BrowserWindow({
     width: 1280,
     height: 860,
-    title: 'Job Hunt',
+    title: 'jobsieve',
     icon: appIcon(),
     autoHideMenuBar: true,
     webPreferences: WEB_PREFERENCES,
@@ -215,7 +215,7 @@ function refreshWindow() {
 function buildAppMenu() {
   Menu.setApplicationMenu(Menu.buildFromTemplate([
     {
-      label: 'Job Hunt',
+      label: 'jobsieve',
       submenu: [
         { label: 'Reload', accelerator: 'F5', click: reloadReport },
         { label: 'Reload', accelerator: 'CmdOrCtrl+R', visible: false, click: reloadReport },
@@ -439,7 +439,7 @@ function buildMenu(counts) {
   const running = runner.status().running;
   return Menu.buildFromTemplate([
     { label: daemon.describeOpen(counts), enabled: false },
-    { label: 'Open Job Hunt', click: showWindow },
+    { label: 'Open jobsieve', click: showWindow },
     { label: 'Log', click: showLogs },
     { type: 'separator' },
     { label: describeScan(), enabled: false },
@@ -493,10 +493,10 @@ function refresh() {
     iconKey = `${tone}:${label}`;
     tray.setImage(nativeImage.createFromBuffer(badgePng(label, { tone }), { scaleFactor: 2 }));
   }
-  tray.setToolTip(`Job Hunt — ${summary}`);
+  tray.setToolTip(`jobsieve — ${summary}`);
 
   if (win && !win.isDestroyed()) {
-    win.setTitle(`Job Hunt — ${daemon.describeOpen(counts)}`);
+    win.setTitle(`jobsieve — ${daemon.describeOpen(counts)}`);
     // The same number on the taskbar button, as a red circle like a messaging app's
     // unread count. Nothing open means no badge at all.
     const key = `${tone}:${label}`;
@@ -520,7 +520,7 @@ function refresh() {
 
 async function start() {
   loadEnv();
-  app.setAppUserModelId('com.jobhunt.tray');
+  app.setAppUserModelId('com.jobsieve.tray');
   // Nothing the report loads may ask for a permission; it has no use for any.
   session.defaultSession.setPermissionRequestHandler((_wc, _perm, done) => done(false));
 

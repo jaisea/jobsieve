@@ -64,7 +64,7 @@ const companies = readJson(p('config', 'companies.json'));
 // sources.json where it would be published with the code.
 configureHttp({
   ...sourcesCfg.http,
-  userAgent: (sourcesCfg.http?.userAgent || 'jobhunt/1.0')
+  userAgent: (sourcesCfg.http?.userAgent || 'jobsieve/1.0')
     .replace('{{contactEmail}}', profile.contact?.email || 'not set'),
 });
 
@@ -2570,14 +2570,14 @@ async function serveReport() {
  */
 async function help() {
   console.log(`
-jobhunt — personal job search agent
+jobsieve — job search pipeline
 
 Daily:
   npm run daily                  search, then open the report with working buttons
   npm run search                 fetch all sources, report only NEW jobs
   npm run serve                  open the report with working buttons
   npm run tray                   background app: scans on a schedule, open-job count in the tray
-  npm run tray:shortcut          put a Job Hunt shortcut on the desktop (no terminal needed)
+  npm run tray:shortcut          put a jobsieve shortcut on the desktop (no terminal needed)
 
   node src/index.js search --due-only   fetch only the sources whose own sleep is over
   npm run search -- --all       re-show everything that passes the filters

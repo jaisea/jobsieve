@@ -245,7 +245,7 @@ test('while a scan runs the button is disabled, and a paused app offers to resum
 
 test('quitting asks first, and the page polls the status and the log only when it matters', () => {
   const js = emittedScript();
-  assert.match(js, /if \(!window\.confirm\('Quit Job Hunt\?/);
+  assert.match(js, /if \(!window\.confirm\('Quit jobsieve\?/);
   assert.match(js, /setInterval\(function\(\)\{ if \(!document\.hidden\) loadApp\(\); \}, 5000\);/);
   assert.match(js, /setInterval\(function\(\)\{ if \(!document\.hidden && document\.body\.dataset\.tab === 'log'\) loadLog\(\); \}, 2000\);/);
   assert.match(js, /if \(d\.text === lastLog\) return;/, 'an unchanged log is not rewritten, which would scroll the page');

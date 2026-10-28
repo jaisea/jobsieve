@@ -387,7 +387,7 @@ export const isoDay = (d = new Date()) => d.toISOString().slice(0, 10);
 
 /* ---------- http ---------- */
 
-let HTTP = { timeoutMs: 30000, retries: 2, userAgent: 'jobhunt/1.0' };
+let HTTP = { timeoutMs: 30000, retries: 2, userAgent: 'jobsieve/1.0' };
 export const configureHttp = (cfg) => { HTTP = { ...HTTP, ...cfg }; };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

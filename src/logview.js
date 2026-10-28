@@ -37,7 +37,7 @@ export function compose(fileText, { running = false } = {}, liveLines = []) {
 
 /** Served at / while there is no report yet, and reloads itself until there is. */
 export const NO_REPORT_PAGE = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><title>Job Hunt</title>
+<html lang="en"><head><meta charset="utf-8"><title>jobsieve</title>
 <meta http-equiv="refresh" content="10">
 <style>
 :root{--bg:#fff;--ink:#1c1f24;--dim:#6b7280}

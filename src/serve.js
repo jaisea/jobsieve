@@ -706,7 +706,7 @@ export async function serve({ port = 8787, open = true, onChange = null, control
 
   server.listen(port, HOST, () => {
     const addr = `http://${HOST}:${port}`;
-    log.head('jobhunt server');
+    log.head('jobsieve server');
     log.ok(`Report with working buttons: ${addr}`);
     log.dim('  Applied / Interested / Not for me now save straight to data/seen.json.');
     log.dim('  Ctrl+C to stop.\n');
