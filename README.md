@@ -482,6 +482,10 @@ Rejected** holds the rest. An application not promoted within **30 days** is fol
 finished whether the refusal arrived in writing or never came. Nothing is deleted, and
 promoting an archived application moves it straight back.
 
+An interview or offer never ages out, so when one **ends**, set its outcome to **not hired**
+(they said no) or **declined** (you said no). It leaves In progress and is back under *Applied*
+with that outcome on the row, and folds into *Archived* with age like any other application.
+
 Every application shows its **Job description** (the `job.md` saved on the day). Applications
 with documents have **Open Docs**; an open job that has documents shows **Open Docs** and
 **Regenerate** in place of *Tailor application*. Regenerate writes into the same folder, keeps
@@ -581,7 +585,7 @@ Windows** in Settings and it is always running.
 | Section | What is on it |
 |---|---|
 | **Open** `(n)` | Scan now / pause / log controls, the add-a-job form, the queue with filter and sort, and postings still waiting for their advert |
-| **In progress** `(n)` | Applications marked interview or offer |
+| **In progress** `(n)` | Applications marked interview or offer; mark one **not hired** or **declined** when it ends and it returns to Applied |
 | **Applied / Rejected** | Applications (with *Archived* folded), tailored-then-turned-down jobs, what you turned down in the last 30 days with **Restore**, and *What you rewrote* |
 | **Discarded** | What the filters threw away, for the periodic audit |
 | **Log** | Scan history and the live output of a running scan |

@@ -189,7 +189,9 @@ ${parkedSection(parked)}
   <div class="page-head">
     <h2>In progress</h2>
     <p class="dim small">Applications you have marked <strong>interview</strong> or <strong>offer</strong>.
-    Set an outcome from the dropdown on an application under <em>Applied / Rejected</em>.</p>
+    Set an outcome from the dropdown on an application under <em>Applied / Rejected</em>. When it ends,
+    choose <strong>not hired</strong> or <strong>declined</strong>: it goes back to <em>Applied / Rejected</em>
+    with that outcome shown.</p>
   </div>
   <div class="panel"><div id="proglist" class="applist"></div></div>
 </section>
@@ -1410,6 +1412,11 @@ const JS = `
          the folder, the CV and the letter are all untouched, and setting an
          outcome on an archived row still works and still moves it. */
       var ARCHIVE_DAYS = 30;
+      // The stored value is a key; the menu and the row say what it means. An interview or
+      // offer that ended is not progressing any more, so the rule below sends it back to
+      // Applied, and age folds it away from there like any other application.
+      var OUTCOME_LABEL = { unsuccessful: 'not hired \u2014 they said no', declined: 'declined \u2014 I said no' };
+      var OUTCOME_CHIP = { unsuccessful: 'not hired', declined: 'offer declined' };
       var cutoff = Date.now() - ARCHIVE_DAYS * 86400000;
       var progressing = [], applied = [], archived = [], turnedDown = [];
       d.applications.forEach(function(a){
@@ -1432,7 +1439,7 @@ const JS = `
 
       function row(a){
         var opts = d.outcomes.map(function(o){
-          return '<option value="' + esc(o) + '"' + (a.outcome === o ? ' selected' : '') + '>' + esc(o) + '</option>';
+          return '<option value="' + esc(o) + '"' + (a.outcome === o ? ' selected' : '') + '>' + esc(OUTCOME_LABEL[o] || o) + '</option>';
         }).join('');
         // An untailored application has no storyline, so without the chip it
         // renders as a bare company name and reads like something went wrong.
@@ -1450,6 +1457,7 @@ const JS = `
           + (a.tailored === false ? '<span class="chip" title="Applied with the standard CV — nothing was tailored.">standard CV</span>' : '')
           + (a.salaryAsked ? '<span class="chip pay" title="What you asked for in their application form.">asked ' + esc(a.salaryAsked) + '</span>' : '')
           + (a.blocked ? '<span class="chip warn">' + esc(a.blocked) + ' unverified</span>' : '')
+          + (OUTCOME_CHIP[a.outcome] ? '<span class="chip" title="How this application ended.">' + esc(OUTCOME_CHIP[a.outcome]) + '</span>' : '')
           // A job turned down has no outcome to set — it was not applied to — and shows why instead.
           + (a.status === 'rejected'
             ? (a.rejectedReason ? '<span class="chip" title="Why you turned it down.">' + esc(reasonText(a.rejectedReason)) + '</span>' : '')

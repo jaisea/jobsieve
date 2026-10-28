@@ -593,8 +593,11 @@ job + master.json + templates → locate → generate (1 call) → verify → re
   and `job.md` from both mark paths (CLI and report button), matching an existing application by
   FINGERPRINT rather than folder name, because a folder name carries a date. Such a folder has no
   `.generation/` data, which is the normal case, not an edge one.
-- **Outcomes are `applied`, `interview`, `offer`** (`OUTCOMES`). Silence is answered by age: 30 days
-  unpromoted folds into Archived. A folder is not an application — a tailored-then-rejected job is
+- **Outcomes are `applied`, `interview`, `offer`, plus `unsuccessful` and `declined`** (`OUTCOMES`).
+  Silence is answered by age: 30 days unpromoted folds into Archived. An interview or offer never
+  ages out, so the last two END one ("not hired" / "declined" on the page): the application goes back
+  to Applied with an outcome chip and ages from there. The values avoid "rejected" on purpose — a job
+  STATUS of `rejected` means the user turned the posting down, and the page groups on both. A folder is not an application — a tailored-then-rejected job is
   listed apart. `readJson(path, null)` returns null for a missing file (absent is not empty).
 - **The asked-for salary** is free text, optional, never cleared by a later status change, and
   `recordApplied()` fills it into an existing folder without overwriting one.
