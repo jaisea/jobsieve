@@ -1,0 +1,31 @@
+# Credentials — never committed. .env.example carries the key names only.
+.env
+.env.backup
+
+# Your profile: name, contact address, work rights, CV-derived skills.
+# Personal config, not code. Start from config/profile.example.json.
+config/profile.json
+
+# Everything the tool remembers: postings, verdicts, fetched descriptions,
+# review state. Also the reason reports/ is excluded — job-alert apply URLs
+# embed per-account auth tokens (LinkedIn's savedSearchAuthToken, otpToken).
+data/
+reports/
+
+node_modules/
+*.log
+logs/
+data_backup*/
+
+# Career material. master.json is your CV in detail — achievements, contact
+# details, work rights. templates/ holds copies of your actual Word documents,
+# applications/ the generated ones. None of it belongs in a public repo.
+config/master.json
+templates/
+applications/
+
+# Corrections you made to generated letters — pairs of generated text and what
+# you actually sent. That is your writing, and it reveals the content of real
+# applications.
+config/style-notes.json
+_*.mjs

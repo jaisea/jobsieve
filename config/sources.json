@@ -1,0 +1,169 @@
+{
+  "_comment": "Toggle sources here. 'requiresKey' sources auto-skip (with a warning) when the env var is absent.",
+  "_sleepComment": "sleepMinutes is how long a source rests between fetches when the background app runs (`search --due-only`). A source without one rests 360 minutes (6 hours). A hand-typed `npm run search` ignores it. It composes with `quota`: a source can be due and still be refused for a spent budget. Mail is cheap and time-sensitive, so 30; JSearch is a monthly budget, so once a day; everything else rests 6 hours.",
+  "arbeitnow": {
+    "enabled": true,
+    "label": "Arbeitnow",
+    "sleepMinutes": 360
+  },
+  "remotive": {
+    "enabled": true,
+    "label": "Remotive",
+    "_categoriesComment": "Remotive category slugs to read (https://remotive.com/api/remote-jobs/categories), e.g. software-dev, devops, data, product.",
+    "categories": ["software-dev", "devops"],
+    "sleepMinutes": 360
+  },
+  "remoteok": {
+    "enabled": true,
+    "label": "RemoteOK",
+    "sleepMinutes": 360,
+    "attributionRequired": true
+  },
+  "ats": {
+    "enabled": true,
+    "label": "Company boards",
+    "sleepMinutes": 360,
+    "priority": 10
+  },
+  "workday": {
+    "enabled": true,
+    "label": "Workday boards",
+    "sleepMinutes": 360,
+    "_comment": "Large German/Swiss employers (Roche, Novartis, ZEISS, Straumann) run Workday, which the five ATS adapters in ats.js cannot see. Tenants CANNOT be discovered by probing: *.myworkdayjobs.com is a wildcard that answers 422 for invented names, so guessing would invent companies. Boards are listed by hand under `workday` in companies.json, each taken from a real career-site URL.",
+    "priority": 10
+  },
+  "adzuna": {
+    "enabled": true,
+    "label": "Adzuna DE",
+    "sleepMinutes": 360,
+    "requiresKey": [
+      "ADZUNA_APP_ID",
+      "ADZUNA_APP_KEY"
+    ],
+    "country": "de",
+    "maxPages": 3,
+    "_quotaComment": "Free tier is 250 requests a DAY, and one run costs queries x maxPages x 2 modes = 42. Four runs in an afternoon reached 168; six would have gone over. A daily cap refills overnight, so unlike JSearch it is NOT worth skipping on a dry run — that would change what the pipeline sees while testing, for a saving that expires anyway.",
+    "quota": {
+      "perDay": 250,
+      "maxRunsPerDay": 5,
+      "skipOnDryRun": false
+    }
+  },
+  "jsearch": {
+    "enabled": true,
+    "label": "JSearch",
+    "sleepMinutes": 1440,
+    "requiresKey": [
+      "RAPIDAPI_KEY"
+    ],
+    "maxQueries": 4,
+    "host": "jsearch.p.rapidapi.com",
+    "path": "/search-v2",
+    "country": "de",
+    "_hostComment": "Copy BOTH from your RapidAPI code snippet: `host` is the X-RapidAPI-Host header value, `path` is whatever follows the host in the request URL. RapidAPI returns 404 when either does not match the API your key is subscribed to — several similarly-named job APIs exist under different hosts and paths.",
+    "_quotaComment": "Free tier, ~200 requests a MONTH, and one query is one request. cycleResetsOnDay is the day of the month the subscription was taken out — RapidAPI meters from then, not from the 1st. assumeUsed seeds what was already spent before the tool started counting. src/quota.js paces the remainder over the days left, refuses a second run the same day, and never spends anything on a --dry-run.",
+    "quota": {
+      "perMonth": 200,
+      "cycleResetsOnDay": 14,
+      "maxRunsPerDay": 1,
+      "assumeUsed": {
+        "cycle": "2026-08-14",
+        "calls": 190,
+        "_why": "measured from the RapidAPI dashboard on 2026-09-04, before the tool started counting. Pinned to this cycle so it stops applying by itself."
+      },
+      "maxQueries": 4
+    }
+  },
+  "arbeitsagentur": {
+    "enabled": true,
+    "label": "Arbeitsagentur",
+    "sleepMinutes": 360,
+    "failSoft": true,
+    "_comment": "ON and working. Uses /pc/v6/jobs with the agency's published X-API-Key — no key of yours, no OAuth. v4 was retired and answered 403, which was misread as a network block for months. Filtered at the source to angebotsart=1 (Arbeit) and arbeitszeit=vz, matching the saved searches on the website so the API and email routes agree."
+  },
+  "mailalerts": {
+    "enabled": true,
+    "label": "Job-alert emails",
+    "sleepMinutes": 30,
+    "requiresKey": [
+      "IMAP_HOST",
+      "IMAP_USER",
+      "IMAP_PASSWORD"
+    ],
+    "_comment": "Reads LinkedIn / StepStone / XING / Indeed alert emails over IMAP. The only legitimate route to StepStone and XING, which have no API and block scraping.",
+    "priority": 0
+  },
+  "agencies": {
+    "enabled": true,
+    "label": "Recruiting agencies",
+    "sleepMinutes": 360,
+    "_comment": "Personalvermittlungen that post on behalf of a client they do not name. Queried by KEYWORD, never crawled: apriori lists 4,337 postings and a sample of 38 recent ones had 2 in scope. Because the employer is a secret, normalize() keys the fingerprint on the agency posting id — see the note there. Per-agency toggles live in config/agencies.json.",
+    "priority": 10
+  },
+  "careersites": {
+    "enabled": true,
+    "label": "Corporate career sites",
+    "sleepMinutes": 360,
+    "_comment": "Employers whose careers platform publishes a sitemap and nothing else machine-readable. The first is SAP SuccessFactors Recruiting Marketing at jobsearch.createyourowncareer.com, one deployment serving 978 postings across 42 Bertelsmann brands (Arvato Systems, Riverty, RTL, smartclip). Its search API lives under /services/, which robots.txt disallows, so the sitemap is used instead. The sitemap URL encodes the title, so the title gate runs before any job page is fetched.",
+    "priority": 10
+  },
+  "_queriesComment": "What the keyword APIs (Adzuna, JSearch, Arbeitsagentur, agencies, remote boards) search for comes from profile.searchQueries, falling back to targetTitles.strong. A shared \"queries\" list here is still read when the profile has none.",
+  "http": {
+    "timeoutMs": 30000,
+    "retries": 2,
+    "concurrency": 4,
+    "_userAgentComment": "{{contactEmail}} is filled in at runtime from profile.json, which is gitignored. Keeping the address out of this file means it is not published with the code.",
+    "userAgent": "jobhunt/1.0 (personal job search; contact: {{contactEmail}})"
+  },
+  "getro": {
+    "enabled": true,
+    "label": "VC portfolio boards",
+    "sleepMinutes": 360,
+    "_comment": "One board per fund, covering its whole portfolio - the only source here that reaches small employers nobody would add one at a time. Cost scales with QUERIES not postings: six boards holding 9,400 postings cost 42 requests, against Workday at up to 355. Unmetered, no key. Its work_mode tag is carried as a HINT only; the advert decides.",
+    "priority": 10
+  },
+  "personio": {
+    "enabled": true,
+    "label": "Personio boards",
+    "sleepMinutes": 360,
+    "_comment": "The German mid-market ATS. Several watchlist companies were blocked on it. career-ops says Personio has no public API and must be rendered; it has an XML feed. One request per tenant; the advert comes from the existing enrich step via ld+json on the job page."
+  },
+  "teamtailor": {
+    "enabled": true,
+    "label": "Teamtailor boards",
+    "sleepMinutes": 360,
+    "_comment": "RSS rather than JSON, so it is its own module rather than a row in the ATS table. The feed carries the full advert, so postings arrive read and never reach the enrich step. Verified against the vendor own board; no German employer tracked on it yet."
+  },
+  "germantechjobs": {
+    "enabled": true,
+    "label": "GermanTechJobs",
+    "sleepMinutes": 360,
+    "_comment": "IT-only German board with mandatory salary and stack. The page is a React shell; the data is /api/jobsLight, the whole board (~1,000 postings) in one request, open to all but Meta's crawler in robots.txt. The advert is server-injected into each job page as window.__detailedJob, so the title gate runs on the list first and only survivors cost a page fetch.",
+    "priority": 10
+  },
+  "beesite": {
+    "enabled": true,
+    "label": "Beesite boards",
+    "sleepMinutes": 360,
+    "_comment": "The JSON search behind Rexx-fronted German career sites; Markant is the first. Lists only — the advert comes from the existing enrich step via ld+json on the job page."
+  },
+  "bwi": {
+    "enabled": true,
+    "label": "BWI GmbH",
+    "sleepMinutes": 360,
+    "_comment": "The Bundeswehr IT provider (~290 postings). Read from the jobs sitemap in the sitemap index, then one ld+json JobPosting per posting that passes the title gate on its URL slug; the advert arrives read. robots.txt allows the sitemaps and disallows only /*cHash pages, which are never requested. Checked 2026-10-16."
+  },
+  "himalayas": {
+    "enabled": true,
+    "label": "Himalayas",
+    "sleepMinutes": 360,
+    "_comment": "Remote board with a keyless search API that can be asked who accepts someone based in Germany (country=Germany). One search per shared query, up to 3 pages. Requires a visible credit; the data may not be republished to LinkedIn, Google Jobs or Jooble."
+  },
+  "jobicy": {
+    "enabled": true,
+    "label": "Jobicy",
+    "sleepMinutes": 360,
+    "_comment": "Remote board with a keyless API (geo=germany, tag=<query>). Requires a visible credit and sending applicants to the original job URL, which applyUrl is."
+  },
+  "_priorityComment": "priority is the order sources START in a scan (lower first; default 50). Up to http.sourcesAtOnce fetches run together (default 6), so the slow ones are started first and their time overlaps with everything else; mail is 0 because it is quick and the most time-sensitive. Each source is processed the moment its fetch lands, in completion order — priority only decides who gets a slot first. Measured on one full scan: agencies 6m27s, germantechjobs 62s, getro 39s, ats 32s, workday 29s, careersites 21s, everything else under 10s."
+}

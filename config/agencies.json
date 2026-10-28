@@ -1,0 +1,9 @@
+{
+  "_comment": "Per-agency switches for the 'agencies' source. Omit an entry and it is on. `queries` overrides the shared list in sources.json for that agency only — useful where one agency's catalogue is mostly something else.",
+
+  "apriori": {
+    "enabled": true,
+    "label": "apriori",
+    "_note": "APRIORI - BUSINESS SOLUTIONS AG, Frankfurt. IT and SAP recruitment. 4,337 postings, ~500 added a month, clean JobPosting ld+json with ~2,000-character descriptions. The client is never named. Its ld+json employmentType reads 'contract' on 37 of 38 sampled postings including ones its own card labels Permanent, so the card is read instead."
+  }
+}

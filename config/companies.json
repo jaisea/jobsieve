@@ -1,0 +1,802 @@
+{
+  "_comment": "ATS boards polled directly. Populated/validated by `npm run discover` — slugs are TESTED, never guessed (figma/ramp 404 on Lever). `verified` is set by discover.",
+  "boards": [
+    {
+      "ats": "greenhouse",
+      "slug": "hellofresh",
+      "name": "hellofresh",
+      "region": "germany-remote-tech",
+      "jobs": 462,
+      "verified": "2026-09-09T20:27:06.569Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "datadog",
+      "name": "datadog",
+      "region": "eu-remote",
+      "jobs": 449,
+      "verified": "2026-09-09T20:27:12.511Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "sumup",
+      "name": "sumup",
+      "region": "germany-remote-tech",
+      "jobs": 403,
+      "verified": "2026-09-09T20:27:04.516Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "cloudflare",
+      "name": "cloudflare",
+      "region": "eu-remote",
+      "jobs": 346,
+      "verified": "2026-09-09T20:27:13.679Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "elastic",
+      "name": "elastic",
+      "region": "germany-remote-tech",
+      "jobs": 345,
+      "verified": "2026-09-09T20:27:10.153Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "canonical",
+      "name": "canonical",
+      "region": "eu-remote",
+      "jobs": 301,
+      "verified": "2026-09-09T20:27:13.030Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "celonis",
+      "name": "celonis",
+      "region": "germany-remote-tech",
+      "jobs": 275,
+      "verified": "2026-09-09T20:27:04.111Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "gitlab",
+      "name": "gitlab",
+      "region": "germany-remote-tech",
+      "jobs": 230,
+      "verified": "2026-09-09T20:27:09.826Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "flix",
+      "name": "flix",
+      "region": "germany-remote-tech",
+      "jobs": 152,
+      "verified": "2026-09-09T20:27:07.019Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "pennylane",
+      "name": "pennylane",
+      "region": "germany-remote-tech",
+      "jobs": 143,
+      "verified": "2026-09-09T20:27:08.538Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "grafanalabs",
+      "name": "grafanalabs",
+      "region": "germany-remote-tech",
+      "jobs": 126,
+      "verified": "2026-09-09T20:27:09.069Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "plaid",
+      "name": "plaid",
+      "region": "eu-remote",
+      "jobs": 101,
+      "verified": "2026-09-09T20:27:12.281Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "vercel",
+      "name": "vercel",
+      "region": "eu-remote",
+      "jobs": 87,
+      "verified": "2026-09-09T20:27:14.866Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "n26",
+      "name": "n26",
+      "region": "germany-remote-tech",
+      "jobs": 66,
+      "verified": "2026-09-09T20:27:04.254Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "docker",
+      "name": "docker",
+      "region": "eu-remote",
+      "jobs": 64,
+      "verified": "2026-09-09T20:27:12.893Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "supabase",
+      "name": "supabase",
+      "region": "eu-remote",
+      "jobs": 60,
+      "verified": "2026-09-09T20:27:14.732Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "getyourguide",
+      "name": "getyourguide",
+      "region": "germany-remote-tech",
+      "jobs": 53,
+      "verified": "2026-09-09T20:27:04.809Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "fastly",
+      "name": "fastly",
+      "region": "eu-remote",
+      "jobs": 44,
+      "verified": "2026-09-09T20:27:13.872Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "raisin",
+      "name": "raisin",
+      "region": "germany-remote-tech",
+      "jobs": 33,
+      "verified": "2026-09-09T20:27:08.052Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "staffbase",
+      "name": "staffbase",
+      "region": "germany-remote-tech",
+      "jobs": 33,
+      "verified": "2026-09-09T20:27:22.546Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "camunda",
+      "name": "camunda",
+      "region": "germany-remote-tech",
+      "jobs": 32,
+      "verified": "2026-09-09T20:27:11.500Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "commercetools",
+      "name": "commercetools",
+      "region": "germany-remote-tech",
+      "jobs": 30,
+      "verified": "2026-09-09T20:27:08.497Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "solarisbank",
+      "name": "solarisbank",
+      "region": "germany-remote-tech",
+      "jobs": 27,
+      "verified": "2026-09-09T20:27:05.556Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "moonfare",
+      "name": "moonfare",
+      "region": "germany-remote-tech",
+      "jobs": 19,
+      "verified": "2026-09-09T20:27:08.198Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "forto",
+      "name": "forto",
+      "region": "germany-remote-tech",
+      "jobs": 12,
+      "verified": "2026-09-09T20:27:06.609Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "circleci",
+      "name": "circleci",
+      "region": "eu-remote",
+      "jobs": 7,
+      "verified": "2026-09-09T20:27:14.110Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "remote",
+      "name": "remote",
+      "region": "eu-remote",
+      "jobs": 2,
+      "verified": "2026-09-09T20:27:11.627Z"
+    },
+    {
+      "ats": "smartrecruiters",
+      "slug": "haufegroup",
+      "name": "haufegroup",
+      "region": "baden-region",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:00.675Z"
+    },
+    {
+      "ats": "lever",
+      "slug": "zeiss",
+      "name": "zeiss",
+      "region": "baden-region",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:02.111Z"
+    },
+    {
+      "ats": "smartrecruiters",
+      "slug": "lonza",
+      "name": "lonza",
+      "region": "basel-region",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:03.233Z"
+    },
+    {
+      "ats": "recruitee",
+      "slug": "personio",
+      "name": "personio",
+      "region": "germany-remote-tech",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:04.059Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "traderepublic",
+      "name": "traderepublic",
+      "region": "germany-remote-tech",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:04.426Z"
+    },
+    {
+      "ats": "smartrecruiters",
+      "slug": "deliveryhero",
+      "name": "deliveryhero",
+      "region": "germany-remote-tech",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:05.242Z"
+    },
+    {
+      "ats": "lever",
+      "slug": "sysdig",
+      "name": "sysdig",
+      "region": "germany-remote-tech",
+      "jobs": 1,
+      "verified": "2026-09-09T20:27:11.399Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "ionos",
+      "name": "IONOS",
+      "region": "germany-remote-tech",
+      "jobs": 34,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "mozilla",
+      "name": "Mozilla",
+      "region": "eu-remote",
+      "jobs": 94,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "tailscale",
+      "name": "Tailscale",
+      "region": "eu-remote",
+      "jobs": 51,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "nebius",
+      "name": "Nebius",
+      "region": "eu-remote",
+      "jobs": 374,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "parloa",
+      "name": "Parloa",
+      "region": "germany-remote-tech",
+      "jobs": 50,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "fivetran",
+      "name": "Fivetran",
+      "region": "eu-remote",
+      "jobs": 187,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "greenhouse",
+      "slug": "helsing",
+      "name": "Helsing",
+      "region": "germany-remote-tech",
+      "jobs": 166,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "black-forest-labs",
+      "name": "Black Forest Labs",
+      "region": "baden-region",
+      "jobs": 14,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "sentry",
+      "name": "Sentry",
+      "region": "eu-remote",
+      "jobs": 40,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "temporal",
+      "name": "Temporal",
+      "region": "eu-remote",
+      "jobs": 64,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "clickhouse",
+      "name": "ClickHouse",
+      "region": "eu-remote",
+      "jobs": 193,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "percona",
+      "name": "Percona",
+      "region": "eu-remote",
+      "jobs": 15,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "confluent",
+      "name": "Confluent",
+      "region": "eu-remote",
+      "jobs": 17,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "n8n",
+      "name": "n8n",
+      "region": "germany-remote-tech",
+      "jobs": 35,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "posthog",
+      "name": "PostHog",
+      "region": "eu-remote",
+      "jobs": 8,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "kong",
+      "name": "Kong",
+      "region": "eu-remote",
+      "jobs": 74,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "1password",
+      "name": "1Password",
+      "region": "eu-remote",
+      "jobs": 67,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "babbel",
+      "name": "Babbel",
+      "region": "germany-remote-tech",
+      "jobs": 11,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "notion",
+      "name": "Notion",
+      "region": "eu-remote",
+      "jobs": 133,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "ashby",
+      "slug": "snowflake",
+      "name": "Snowflake",
+      "region": "eu-remote",
+      "jobs": 343,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "recruitee",
+      "slug": "inovex",
+      "name": "inovex",
+      "region": "germany-remote-tech",
+      "jobs": 22,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "ats": "smartrecruiters",
+      "slug": "mirantis",
+      "name": "Mirantis",
+      "region": "eu-remote",
+      "jobs": 94,
+      "verified": "2026-10-01T18:34:25.922Z"
+    }
+  ],
+  "_ignoredComment": "Boards deliberately NOT polled, with the reason recorded. Checked by both `npm run discover` and `discover --add`, so a decision made once is not quietly undone by a later probe. Matched on ats+slug, case-insensitively. This is the right home for any \"we looked at it and said no\" verdict about a board.",
+  "ignored": [
+    {
+      "ats": "smartrecruiters",
+      "slug": "Bertelsmann-Jobs",
+      "name": "Bertelsmann (group board)",
+      "reason": "Same catalogue as the careersites source, which names the real employer. This board reports company \"Bertelsmann-Jobs\" on all 1,005 postings, so every job would appear twice under two different employers — and a constant company makes sha1(company|title|city) collide: 17 title+city pairs are shared, which would silently swallow 18 postings. careersites reads the same jobs from the group sitemap and gives smartclip / Riverty / Arvato Systems.",
+      "decidedAt": "2026-09-09"
+    }
+  ],
+  "candidates": {
+    "_comment": "Probed by `npm run discover` against greenhouse/lever/ashby/smartrecruiters/recruitee. Region tags feed the report.",
+    "baden-region": [
+      "haufe",
+      "haufegroup",
+      "sick",
+      "sickag",
+      "testo",
+      "testose",
+      "badenova",
+      "herrenknecht",
+      "hansgrohe",
+      "stryker",
+      "pfizer",
+      "zeiss",
+      "duravit",
+      "sedus",
+      "vitra",
+      "solvares",
+      "micronas",
+      "litef",
+      "cellular",
+      "black-forest-labs",
+      "constellr",
+      "continum",
+      "freicon"
+    ],
+    "basel-region": [
+      "roche",
+      "novartis",
+      "endress",
+      "endresshauser",
+      "lonza",
+      "syngenta",
+      "basilea",
+      "idorsia",
+      "bachem",
+      "straumann",
+      "siegfried",
+      "swisscom"
+    ],
+    "germany-remote-tech": [
+      "sap",
+      "personio",
+      "celonis",
+      "n26",
+      "traderepublic",
+      "sumup",
+      "contentful",
+      "getyourguide",
+      "hellofresh",
+      "zalando",
+      "deliveryhero",
+      "sennder",
+      "solarisbank",
+      "solaris",
+      "wandelbots",
+      "staffbase",
+      "mambu",
+      "forto",
+      "flixbus",
+      "flix",
+      "scalable",
+      "raisin",
+      "moonfare",
+      "pennylane",
+      "commercetools",
+      "chronosphere",
+      "grafanalabs",
+      "grafana",
+      "hashicorp",
+      "gitlab",
+      "elastic",
+      "sysdig",
+      "camunda",
+      "ionos",
+      "parloa",
+      "helsing",
+      "n8n",
+      "babbel",
+      "inovex",
+      "syseleven"
+    ],
+    "eu-remote": [
+      "remote",
+      "deel",
+      "plaid",
+      "datadog",
+      "docker",
+      "canonical",
+      "suse",
+      "redhat",
+      "cloudflare",
+      "fastly",
+      "circleci",
+      "snyk",
+      "aiven",
+      "supabase",
+      "vercel",
+      "mozilla",
+      "tailscale",
+      "nebius",
+      "fivetran",
+      "sentry",
+      "temporal",
+      "clickhouse",
+      "percona",
+      "confluent",
+      "posthog",
+      "kong",
+      "1password",
+      "notion",
+      "snowflake",
+      "mirantis",
+      "giant-swarm",
+      "spacelift"
+    ]
+  },
+  "workday": [
+    {
+      "tenant": "roche",
+      "pod": "wd3",
+      "site": "roche-ext",
+      "name": "Roche",
+      "url": "https://roche.wd3.myworkdayjobs.com/roche-ext/job/Basel/Principal-Site-Reliability-Engineer_202605-112449-2",
+      "jobs": 1196,
+      "verified": "2026-08-17T13:26:13.573Z"
+    },
+    {
+      "tenant": "novartis",
+      "pod": "wd3",
+      "site": "Novartis_Careers",
+      "name": "Novartis",
+      "url": "https://novartis.wd3.myworkdayjobs.com/en-US/Novartis_Careers",
+      "jobs": 964,
+      "verified": "2026-08-17T13:27:11.819Z"
+    },
+    {
+      "tenant": "sanofi",
+      "pod": "wd3",
+      "site": "SanofiCareers",
+      "name": "Sanofi",
+      "url": "https://sanofi.wd3.myworkdayjobs.com/en-US/SanofiCareers",
+      "jobs": 788,
+      "verified": "2026-08-17T13:27:13.171Z"
+    },
+    {
+      "tenant": "stryker",
+      "pod": "wd1",
+      "site": "StrykerCareers",
+      "name": "Stryker",
+      "url": "https://stryker.wd1.myworkdayjobs.com/StrykerCareers",
+      "jobs": 1135,
+      "verified": "2026-08-17T13:35:58.447Z"
+    },
+    {
+      "tenant": "pfizer",
+      "pod": "wd1",
+      "site": "PfizerCareers",
+      "name": "Pfizer",
+      "url": "https://pfizer.wd1.myworkdayjobs.com/PfizerCareers",
+      "jobs": 591,
+      "verified": "2026-08-17T13:36:00.805Z"
+    },
+    {
+      "tenant": "mesalvo",
+      "pod": "wd103",
+      "site": "Mesalvo",
+      "name": "Mesalvo",
+      "url": "https://mesalvo.wd103.myworkdayjobs.com/Mesalvo",
+      "jobs": 10,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "tenant": "swisscom",
+      "pod": "wd103",
+      "site": "swisscomexternalcareers",
+      "name": "Swisscom",
+      "url": "https://swisscom.wd103.myworkdayjobs.com/swisscomexternalcareers",
+      "jobs": 50,
+      "verified": "2026-10-01T18:34:25.922Z"
+    },
+    {
+      "tenant": "siegfried",
+      "pod": "wd103",
+      "site": "external",
+      "name": "Siegfried",
+      "url": "https://siegfried.wd103.myworkdayjobs.com/external",
+      "jobs": 64,
+      "verified": "2026-10-01T18:34:25.922Z"
+    }
+  ],
+  "_workdayComment": "Hand-entered, never probed: *.myworkdayjobs.com is a wildcard that answers 422 for invented tenants, so guessing would fabricate companies. To add one: open the company career site, click any job, copy the URL, and run npm run discover -- --workday <url> to verify and append it.",
+  "_getroComment": "VC portfolio boards. One board covers every company a fund has invested in, so this reaches small employers nothing else here would list. `collection` is the board's network id, found in the page's __NEXT_DATA__ as a STRING (\"network\":{\"id\":\"617\"}); leave it out and it is resolved on the first fetch at the cost of one page request. Measured 2026-09-29 across these six: 9,397 postings total, 929 remote, 109 unique hits on six infrastructure terms, 18 passing a real title gate, 12 not US/APAC-anchored - for 42 requests.",
+  "getro": [
+    {
+      "name": "Earlybird",
+      "url": "https://jobs.earlybird.com/jobs",
+      "collection": "617",
+      "region": "germany-remote-tech",
+      "note": "Berlin/Munich. 600 postings, 41 remote.",
+      "enabled": true
+    },
+    {
+      "name": "HV Capital",
+      "url": "https://hv.getro.com/jobs",
+      "collection": "234",
+      "region": "germany-remote-tech",
+      "note": "Munich. 2,274 postings, 162 remote.",
+      "enabled": true
+    },
+    {
+      "name": "Point Nine",
+      "url": "https://jobs.pointnine.com/jobs",
+      "collection": "1680",
+      "region": "germany-remote-tech",
+      "note": "Berlin. 1,672 postings, 165 remote.",
+      "enabled": true
+    },
+    {
+      "name": "Cherry Ventures",
+      "url": "https://talent.cherry.vc/jobs",
+      "collection": "44081",
+      "region": "germany-remote-tech",
+      "note": "Berlin. 1,054 postings, 113 remote.",
+      "enabled": true
+    },
+    {
+      "name": "Speedinvest",
+      "url": "https://careers.speedinvest.com/jobs",
+      "collection": "947",
+      "region": "eu-remote",
+      "note": "Vienna, DACH-focused. 1,443 postings, 124 remote.",
+      "enabled": true
+    },
+    {
+      "name": "Atomico",
+      "url": "https://careers.atomico.com/jobs",
+      "collection": "36986",
+      "region": "eu-remote",
+      "note": "London, pan-European. 2,354 postings, 324 remote.",
+      "enabled": true
+    }
+  ],
+  "_personioComment": "Personio tenants. The feed is XML at {slug}.jobs.personio.{tld}/xml and carries no apply URL - it is built from the id as /job/{id}, verified to resolve and to carry ld+json, so enrich reads the advert with no new code. Most positions leave <jobDescriptions> empty (3 of 18 at Jedox), which is why that matters. `tld` is per tenant: de or com.",
+  "personio": [
+    {
+      "name": "Jedox",
+      "slug": "jedox",
+      "tld": "de",
+      "region": "baden-region",
+      "note": "18 positions.",
+      "enabled": true
+    },
+    {
+      "name": "Solvares",
+      "slug": "solvares",
+      "tld": "de",
+      "region": "baden-region",
+      "note": "8 positions noted on the watchlist.",
+      "enabled": true
+    },
+    {
+      "name": "Basilea",
+      "slug": "basilea",
+      "tld": "com",
+      "region": "basel-region",
+      "note": "1 position noted on the watchlist.",
+      "enabled": true
+    },
+    {
+      "name": "SysEleven",
+      "slug": "syseleven",
+      "tld": "de",
+      "region": "germany-remote-tech",
+      "note": "Berlin, \"100% remote possible\". 3 positions at last check.",
+      "enabled": true
+    },
+    {
+      "name": "Giant Swarm",
+      "slug": "giant-swarm",
+      "tld": "de",
+      "region": "eu-remote",
+      "note": "Remote-first Kubernetes company; small board, worth a recurring poll. 1 positions at last check.",
+      "enabled": true
+    },
+    {
+      "name": "constellr",
+      "slug": "constellr",
+      "tld": "de",
+      "region": "baden-region",
+      "note": "Satellite data; a Senior Cloud Engineer role was advertised earlier. 3 positions at last check.",
+      "enabled": true
+    },
+    {
+      "name": "Continum",
+      "slug": "continum",
+      "tld": "de",
+      "region": "baden-region",
+      "note": "IT services; mostly German-language. 4 positions at last check.",
+      "enabled": true
+    },
+    {
+      "name": "FREICON",
+      "slug": "freicon",
+      "tld": "de",
+      "region": "baden-region",
+      "note": "IT services; mostly sales/admin, German-language. 8 positions at last check.",
+      "enabled": true
+    }
+  ],
+  "_teamtailorComment": "Teamtailor tenants, at {slug}.teamtailor.com/jobs.rss. RSS, not JSON, which is why it is its own source and not a row in the ATS table - an RSS url there would be fetched by httpJson and fail like a dead board. The feed carries the WHOLE advert, so these arrive read and skip the enrich step entirely. No German employer is tracked on it yet; the seed entry is Teamtailor's own board, which is what this was built against.",
+  "teamtailor": [
+    {
+      "name": "Teamtailor",
+      "slug": "career",
+      "region": "eu-remote",
+      "note": "The vendor’s own board, 17 postings. Kept as the one live example the reader was verified against.",
+      "enabled": true
+    },
+    {
+      "name": "Spacelift",
+      "slug": "spacelift",
+      "region": "eu-remote",
+      "note": "Remote-first IaC platform. 7 postings at last check.",
+      "enabled": true
+    }
+  ],
+  "_beesiteComment": "The JSON search behind a family of German career sites (Rexx-fronted, one tenant per employer). The host cannot be derived from the employer's name: find it in the career page's own XHR calls. The listing carries no advert; the job page has JobPosting ld+json, which the enrich step reads.",
+  "beesite": [
+    {
+      "name": "Markant",
+      "slug": "markant",
+      "host": "markant-beesite-production-gjb.app.beesite.de",
+      "region": "baden-region",
+      "note": "Retail services + IT group; SRE, Cloud Platform and DevOps roles seen. 42 postings at last check.",
+      "enabled": true
+    }
+  ]
+}

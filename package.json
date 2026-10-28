@@ -1,0 +1,41 @@
+{
+  "name": "jobsieve",
+  "version": "1.0.0",
+  "description": "Job search pipeline — polls job APIs, company ATS boards and alert emails, filters with explainable rules gates, asks an LLM only about what the rules cannot settle, remembers what it has shown, and serves a report.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "daily": "node src/index.js daily",
+    "apply": "node src/index.js apply",
+    "search": "node src/index.js search",
+    "replay": "node src/index.js search --replay",
+    "judge": "node src/index.js search --judge-queue",
+    "dry": "node src/index.js search --dry-run --verbose",
+    "report": "node src/index.js report",
+    "discover": "node src/index.js discover",
+    "mark": "node src/index.js mark",
+    "why": "node src/index.js why",
+    "companies": "node src/index.js companies",
+    "reviewed": "node src/index.js reviewed",
+    "keys": "node src/index.js keys",
+    "serve": "node src/index.js serve",
+    "tray": "electron src/electron/main.js",
+    "tray:shortcut": "node src/electron/shortcut.js"
+  },
+  "dependencies": {
+    "imapflow": "^1.7.0",
+    "mailparser": "^3.9.15"
+  },
+  "devDependencies": {
+    "electron": "^44.5.1"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaisea/jobsieve.git"
+  }
+}

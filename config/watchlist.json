@@ -1,0 +1,361 @@
+{
+  "_comment": "Companies you want to hear from. Status is DERIVED — see src/watchlist.js — so the only fields you maintain are the company, its region, and whether you have set up an email alert. `platform` and `supported` record what was found when the career site was last examined; `board` links to an entry in companies.json.",
+  "companies": [
+    {
+      "id": "roche",
+      "name": "Roche",
+      "aliases": [
+        "F. Hoffmann-La Roche",
+        "Roche Diagnostics"
+      ],
+      "region": "basel-region",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "roche"
+      }
+    },
+    {
+      "id": "novartis",
+      "name": "Novartis",
+      "region": "basel-region",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "novartis"
+      }
+    },
+    {
+      "id": "sanofi",
+      "name": "Sanofi",
+      "region": "germany-remote-tech",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "sanofi"
+      }
+    },
+    {
+      "id": "stryker",
+      "name": "Stryker",
+      "region": "baden-region",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "stryker"
+      },
+      "note": "Tenant is on pod wd1, not wd3."
+    },
+    {
+      "id": "pfizer",
+      "name": "Pfizer",
+      "region": "baden-region",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "pfizer"
+      },
+      "note": "Tenant is on pod wd1."
+    },
+    {
+      "id": "haufe",
+      "name": "Haufe Group",
+      "aliases": [
+        "Haufe"
+      ],
+      "region": "baden-region",
+      "platform": "SmartRecruiters",
+      "supported": true,
+      "board": {
+        "ats": "smartrecruiters",
+        "slug": "haufegroup"
+      },
+      "note": "Board serves 1 posting — a stub. Real listings are elsewhere; an alert is worth having."
+    },
+    {
+      "id": "zeiss",
+      "name": "ZEISS",
+      "aliases": [
+        "Carl Zeiss"
+      ],
+      "region": "baden-region",
+      "platform": "Lever",
+      "supported": true,
+      "board": {
+        "ats": "lever",
+        "slug": "zeiss"
+      },
+      "note": "Board serves 1 posting — a stub."
+    },
+    {
+      "id": "lonza",
+      "name": "Lonza",
+      "region": "basel-region",
+      "platform": "SmartRecruiters",
+      "supported": true,
+      "board": {
+        "ats": "smartrecruiters",
+        "slug": "lonza"
+      },
+      "note": "Board serves 1 posting — a stub."
+    },
+    {
+      "id": "endress",
+      "name": "Endress+Hauser",
+      "aliases": [
+        "Endress",
+        "Endress Hauser"
+      ],
+      "region": "basel-region",
+      "platform": "SuccessFactors (sitemap)",
+      "supported": true,
+      "alert": true,
+      "note": "Read from the careersites sitemap since 2026-10-01 (the earlier note — no feed, alert only — was true of the JS shell, not of the sitemap). The email alert stays as a second route.",
+      "board": {
+        "kind": "careersite",
+        "site": "endress"
+      }
+    },
+    {
+      "id": "sick",
+      "name": "SICK",
+      "aliases": [
+        "SICK AG"
+      ],
+      "region": "baden-region",
+      "platform": "SuccessFactors (sitemap)",
+      "supported": true,
+      "note": "Read from the careersites sitemap; no feed exists. Currently apprenticeships and theses only.",
+      "alert": false,
+      "alertSetAt": null,
+      "board": {
+        "kind": "careersite",
+        "site": "sick"
+      }
+    },
+    {
+      "id": "bachem",
+      "name": "Bachem",
+      "region": "basel-region",
+      "platform": "SuccessFactors (sitemap)",
+      "supported": true,
+      "board": {
+        "kind": "careersite",
+        "site": "bachem"
+      },
+      "note": "Read from the careersites sitemap; IT roles seen: Enterprise Architect, Databricks platform owner."
+    },
+    {
+      "id": "medice",
+      "name": "MEDICE",
+      "aliases": [
+        "MEDICE Arzneimittel Pütter GmbH & Co. KG"
+      ],
+      "region": "germany-remote-tech",
+      "platform": "SuccessFactors (sitemap)",
+      "supported": true,
+      "board": {
+        "kind": "careersite",
+        "site": "medice"
+      },
+      "note": "Read from the careersites sitemap since 2026-10-20; worth it only for remote roles such as the digital-health DevSecOps Engineer."
+    },
+    {
+      "id": "idorsia",
+      "name": "Idorsia",
+      "region": "basel-region",
+      "platform": "SuccessFactors",
+      "supported": false
+    },
+    {
+      "id": "straumann",
+      "name": "Straumann",
+      "region": "basel-region",
+      "platform": "Eightfold/Phenom",
+      "supported": false
+    },
+    {
+      "id": "jedox",
+      "name": "Jedox",
+      "region": "baden-region",
+      "platform": "Personio",
+      "supported": true,
+      "note": "Public XML feed at jedox.jobs.personio.de/xml serves 20 positions — reachable if the Personio adapter is built. Read by the personio source since 2026-09-29."
+    },
+    {
+      "id": "solvares",
+      "name": "Solvares",
+      "region": "baden-region",
+      "platform": "Personio",
+      "supported": true,
+      "note": "Public XML feed serves 8 positions. Read by the personio source since 2026-09-29."
+    },
+    {
+      "id": "basilea",
+      "name": "Basilea",
+      "region": "basel-region",
+      "platform": "Personio",
+      "supported": true,
+      "note": "Public XML feed serves 1 position. Read by the personio source since 2026-09-29."
+    },
+    {
+      "id": "testo",
+      "name": "Testo",
+      "region": "baden-region",
+      "note": "Titisee-Neustadt. Probe returned 429; platform undetermined."
+    },
+    {
+      "id": "badenova",
+      "name": "badenova",
+      "region": "baden-region",
+      "note": "Probe blocked; platform undetermined."
+    },
+    {
+      "id": "herrenknecht",
+      "name": "Herrenknecht",
+      "region": "baden-region",
+      "note": "Schwanau. Probe blocked."
+    },
+    {
+      "id": "hansgrohe",
+      "name": "Hansgrohe",
+      "region": "baden-region",
+      "note": "Schiltach. Probe blocked."
+    },
+    {
+      "id": "duravit",
+      "name": "Duravit",
+      "region": "baden-region",
+      "note": "Hornberg. Career URL 404 — needs a current link."
+    },
+    {
+      "id": "vitra",
+      "name": "Vitra",
+      "region": "baden-region",
+      "note": "Weil am Rhein. Probe returned 403."
+    },
+    {
+      "id": "sedus",
+      "name": "Sedus",
+      "region": "baden-region",
+      "note": "Waldshut. Personio suspected — probe returned 429."
+    },
+    {
+      "id": "micronas",
+      "name": "Micronas",
+      "region": "baden-region",
+      "note": "Not yet examined."
+    },
+    {
+      "id": "litef",
+      "name": "Northrop Grumman LITEF",
+      "aliases": [
+        "LITEF"
+      ],
+      "region": "baden-region",
+      "note": "Not yet examined."
+    },
+    {
+      "id": "syngenta",
+      "name": "Syngenta",
+      "region": "basel-region",
+      "note": "Workday tenant exists but the site name is unknown (401)."
+    },
+    {
+      "id": "bayer",
+      "name": "Bayer",
+      "region": "germany-remote-tech",
+      "note": "Probe inconclusive."
+    },
+    {
+      "id": "black-forest-labs",
+      "name": "Black Forest Labs",
+      "region": "baden-region",
+      "platform": "Ashby",
+      "supported": true,
+      "board": {
+        "ats": "ashby",
+        "slug": "black-forest-labs"
+      },
+      "note": "Generative-AI lab. English postings, roles onsite."
+    },
+    {
+      "id": "mesalvo",
+      "name": "Mesalvo",
+      "region": "baden-region",
+      "platform": "Workday",
+      "supported": true,
+      "board": {
+        "kind": "workday",
+        "tenant": "mesalvo"
+      },
+      "note": "Clinical software. Some roles are Remote, Germany."
+    },
+    {
+      "id": "jobrad",
+      "name": "JobRad",
+      "region": "baden-region",
+      "platform": "Own site (no feed)",
+      "supported": false,
+      "note": "About 8 tech roles on karriere.jobrad.org; no machine-readable feed — set an email alert."
+    },
+    {
+      "id": "burda",
+      "name": "Hubert Burda Media",
+      "aliases": [
+        "Burda",
+        "BurdaSolutions"
+      ],
+      "region": "baden-region",
+      "platform": "SuccessFactors portal (no sitemap)",
+      "supported": false,
+      "note": "DevOps / network-automation roles seen; no sitemap or feed — set an email alert."
+    },
+    {
+      "id": "inxmail",
+      "name": "Inxmail",
+      "region": "baden-region",
+      "platform": "HRworks (HTML only)",
+      "supported": false,
+      "note": "Few postings, German-language."
+    },
+    {
+      "id": "fraunhofer",
+      "name": "Fraunhofer",
+      "aliases": [
+        "Fraunhofer-Gesellschaft"
+      ],
+      "region": "baden-region",
+      "platform": "SuccessFactors (sitemap)",
+      "supported": true,
+      "board": {
+        "kind": "careersite",
+        "site": "fraunhofer"
+      },
+      "note": "Institutes (ISE, IPM, EMI, IAF). Read from the careersites sitemap; mostly theses, occasional software roles."
+    },
+    {
+      "id": "markant",
+      "name": "Markant",
+      "aliases": [
+        "Markant Services International",
+        "Markant Services International GmbH",
+        "Retail AI",
+        "Handelsmarken"
+      ],
+      "region": "baden-region",
+      "platform": "Beesite (Rexx)",
+      "supported": true,
+      "board": {
+        "kind": "beesite",
+        "slug": "markant"
+      },
+      "note": "SRE, Cloud Platform and DevOps roles on a JSON search feed; mixed German/English."
+    }
+  ]
+}

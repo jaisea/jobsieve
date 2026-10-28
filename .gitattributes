@@ -1,0 +1,18 @@
+# Line endings, decided by the repo rather than by whatever core.autocrlf each
+# clone happens to have. Without this, the same file can look modified on one
+# machine and clean on another, and diffs fill up with invisible \r churn.
+
+# Everything Git considers text is stored with LF and checked out with LF.
+* text=auto eol=lf
+
+# ...except the Windows launchers. cmd.exe is the one consumer that genuinely
+# cares: a .cmd file with LF endings can mis-execute, so these keep CRLF.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Never touched, never diffed as text.
+*.png binary
+*.jpg binary
+*.pdf binary
+*.ico binary

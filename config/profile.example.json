@@ -1,0 +1,254 @@
+{
+  "_comment": "Copy to config/profile.json and edit — that file is gitignored, because it holds your name, contact address and work rights. This example describes a full-stack web engineer; config/examples/devops.profile.json describes a DevOps / SRE / cloud engineer. Nothing in the code assumes a field: the titles, search terms, relevance vocabulary and skills below are what decide what you see. Every gate and weight is read at runtime.",
+  "name": "Your Name",
+  "yearsExperience": 5,
+  "currentTitle": "Full-Stack Engineer",
+  "_fieldComment": "Your field in a few words. Told to the model as part of who you are.",
+  "field": "full-stack web development",
+  "contact": {
+    "email": "you@example.com",
+    "_comment": "Sent only in the User-Agent to the job APIs, so an operator can reach a human if a poll misbehaves. Nothing else reads it."
+  },
+  "location": {
+    "city": "München",
+    "country": "DE",
+    "lat": 48.137,
+    "lon": 11.575,
+    "radiusKm": 70,
+    "_reachesComment": "Named in the AI prompt when your radius crosses a border worth mentioning, e.g. \"Basel (Switzerland)\". Omit if it does not.",
+    "_radiusComment": "Onsite and hybrid roles must fall inside this radius. The gazetteer in src/geo.js covers Germany, Switzerland and eastern France; add coordinates there if you live elsewhere.",
+    "_localTermsComment": "Region and neighbour names that mean 'near enough' when a posting location cannot be resolved to coordinates. The city and country are added automatically; list only what they miss.",
+    "localTerms": [
+      "oberbayern",
+      "bayern",
+      "bavaria"
+    ]
+  },
+  "workRights": {
+    "_comment": "Feeds the AI adjudicator so it does not surface roles you cannot legally take. Only `sponsorshipFreeIn` is read.",
+    "citizenship": "XX",
+    "residence": "Describe your right to work, e.g. 'EU citizen' or 'permanent resident'",
+    "sponsorshipFreeIn": [
+      "DE"
+    ]
+  },
+  "languages": {
+    "english": "fluent",
+    "germanLevel": "B1",
+    "germanTarget": "B2",
+    "stretchB2": false,
+    "_stretchComment": "false = a stated B2 requirement is a plain drop. Set true to surface B2 roles in their own Stretch band instead. Postings that never state a requirement are judged on their own merits either way, not on the language they are written in.",
+    "_comment": "Raise germanLevel after an exam and every gap is re-measured — 'conversational' postings promote themselves out of the Stretch band."
+  },
+  "noticePeriodMonths": 3,
+  "salary": {
+    "askingDefault": 65000
+  },
+  "targetTitles": {
+    "_comment": "STRONG = the roles you actually want. canonicalTitle() folds developer/entwickler/ingenieur -> engineer, so \"Full-Stack Developer\" and \"Fullstack Entwickler\" match \"full stack engineer\" too.",
+    "strong": [
+      "full stack engineer",
+      "fullstack engineer",
+      "frontend engineer",
+      "backend engineer",
+      "web engineer",
+      "software engineer"
+    ],
+    "_goodComment": "Near-identical roles posted under a different name. Kept at reduced weight so they surface without competing with the targets above.",
+    "good": [
+      "javascript engineer",
+      "typescript engineer",
+      "react engineer",
+      "node engineer",
+      "product engineer",
+      "application engineer"
+    ],
+    "_excludeComment": "Matched as whole words, never substrings — 'intern' will not hit 'International', 'sales' will not hit 'Salesforce'.",
+    "exclude": [
+      "junior",
+      "intern",
+      "internship",
+      "praktikum",
+      "praktikant",
+      "werkstudent",
+      "working student",
+      "ausbildung",
+      "auszubildende",
+      "trainee",
+      "apprentice",
+      "studentische",
+      "duales studium",
+      "bachelor thesis",
+      "masterarbeit",
+      "sales",
+      "recruiter",
+      "account executive",
+      "business development",
+      "technical writer",
+      "account manager",
+      "product manager",
+      "program manager",
+      "customer success",
+      "customer experience",
+      "presales",
+      "pre-sales",
+      "sales engineer",
+      "data scientist"
+    ]
+  },
+  "_searchQueriesComment": "What the keyword APIs (Adzuna, JSearch, Arbeitsagentur, the agencies, the remote boards) are asked for. Absent, targetTitles.strong is used.",
+  "searchQueries": [
+    "Full Stack Developer",
+    "Frontend Developer",
+    "Backend Developer",
+    "Software Engineer",
+    "React Developer",
+    "TypeScript"
+  ],
+  "relevance": {
+    "_comment": "The title vocabulary of your field. domainTerms keep a title that matches no target; offTrack drops a title as another specialisation (unless it also names a domain term — then it is a question for the model); nearMissTerms beside a role noun make a title worth asking about; nearMissPatterns are regexes for near misses a word list cannot express; roleDescription names the field in questions to the model.",
+    "roleDescription": "full-stack / frontend / backend web development",
+    "domainTerms": [
+      "full stack",
+      "fullstack",
+      "frontend",
+      "front end",
+      "backend",
+      "back end",
+      "web developer",
+      "web engineer",
+      "software engineer",
+      "software developer",
+      "react",
+      "typescript",
+      "javascript",
+      "node"
+    ],
+    "offTrack": [
+      "devops",
+      "site reliability",
+      "sre",
+      "data scientist",
+      "machine learning engineer",
+      "ml engineer",
+      "firmware",
+      "embedded",
+      "hardware",
+      "mechanical",
+      "electrical",
+      "game",
+      "unity",
+      "unreal",
+      "ui designer",
+      "graphic"
+    ],
+    "_nearMissComment": "Keep generic words such as \"operations\" and \"systems\" OUT of this list: they pulled in \"People Operations Specialist\" and \"Casual Rugby Systems Operator\".",
+    "nearMissTerms": [
+      "web",
+      "javascript",
+      "typescript",
+      "react",
+      "angular",
+      "vue",
+      "node",
+      "java",
+      "python",
+      "php",
+      "application"
+    ],
+    "nearMissPatterns": []
+  },
+  "skills": {
+    "_comment": "What you work with, on two axes.\nKIND: tools (products you can point at), practices (what they are used for), adjacent (scored, never evidence).\nTIER decides what a mention is WORTH when scoring: core 3.2, secondary 1.1, nice 0.5.\nOne entry covers every spelling: the separator inside a term is optional, so \"ci/cd\" also matches \"CI-CD\" and \"CICD\".",
+    "tools": {
+      "core": [
+        "typescript",
+        "javascript",
+        "react",
+        "node.js",
+        "postgresql"
+      ],
+      "secondary": [
+        "next.js",
+        "graphql",
+        "docker",
+        "redis",
+        "tailwind"
+      ],
+      "nice": [
+        "aws",
+        "kubernetes",
+        "playwright"
+      ]
+    },
+    "practices": {
+      "core": [
+        "rest api",
+        "testing"
+      ],
+      "secondary": [
+        "ci/cd",
+        "accessibility"
+      ],
+      "nice": [
+        "performance"
+      ]
+    },
+    "adjacent": {
+      "core": [],
+      "secondary": [
+        "full stack",
+        "frontend",
+        "backend"
+      ],
+      "nice": [
+        "python",
+        "go"
+      ]
+    }
+  },
+  "domainBonus": {
+    "_comment": "Industries your experience transfers to — a small bonus when a posting names one. Set terms to [] to switch this off.",
+    "terms": [
+      "e-commerce",
+      "saas",
+      "fintech"
+    ],
+    "points": 4
+  },
+  "scoring": {
+    "titleMax": 40,
+    "skillsMax": 30,
+    "locationMax": 20,
+    "freshnessMax": 10,
+    "freshFullDays": 7,
+    "freshZeroDays": 30,
+    "bands": {
+      "strong": 70,
+      "good": 50
+    }
+  },
+  "llm": {
+    "_comment": "LLM adjudication for the postings the rules cannot settle. Rules handle certain keeps and certain drops for free; only genuine ambiguity costs a call. Verdicts are cached by fingerprint, so re-runs are free. With no credentials the pipeline falls back to rules verdicts and says so in the report.",
+    "enabled": true,
+    "_providerComment": "Gemini is the only provider. Leave `providers` null to use the .env value; set it here to override per-project.",
+    "providers": null,
+    "concurrency": 4,
+    "maxCallsPerRun": 300,
+    "_maxCallsComment": "A CIRCUIT BREAKER, not a budget. At ~$0.0003 a call and about 39 calls in a typical run, cost is ~$0.36 a month — the cache absorbs 80% of escalations. 300 is roughly double the busiest real run, so it never fires normally; it exists to stop a gate regression that makes all 6,600 postings uncertain. Nothing is lost when it fires: the overflow defers to data/pending.json and is retried next run, today first."
+  },
+  "avoid": {
+    "_comment": "Hard exclusions on the SHAPE of the role. Optional: penaltyNiceToHaveProgramming (e.g. -4) scores down adverts that mention coding as a nice-to-have, for an operations-leaning profile."
+  },
+  "filters": {
+    "excludeRemoteScopes": [
+      "US-only"
+    ],
+    "_excludeEmploymentTypesComment": "Canonical kinds, not source spellings: part-time, contract, internship, temporary. The gate normalises Vollzeit / Full Time / FullTime / Teilzeit / parttime etc. A value offering BOTH (\"Full or part time\") is never excluded.",
+    "excludeEmploymentTypes": [
+      "part-time"
+    ],
+    "minScore": 25,
+    "maxAgeDays": 45
+  }
+}

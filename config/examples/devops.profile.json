@@ -1,0 +1,378 @@
+{
+  "_comment": "An example profile for a DevOps / SRE / platform / cloud engineer. Copy it to config/profile.json and edit, or start from config/profile.example.json (full-stack). profile.json is gitignored — it holds your CV-level facts, which do not belong in a public repository. Every gate and weight below is read at runtime.",
+  "name": "Your Name",
+  "yearsExperience": 10,
+  "currentTitle": "DevOps Engineer",
+  "_fieldComment": "Your field in a few words. Told to the model as part of who you are.",
+  "field": "infrastructure and platform engineering",
+  "contact": {
+    "email": "you@example.com",
+    "_comment": "Sent only in the User-Agent to the job APIs, so an operator can reach a human if a poll misbehaves. Nothing else reads it."
+  },
+  "location": {
+    "city": "München",
+    "country": "DE",
+    "lat": 48.137,
+    "lon": 11.575,
+    "radiusKm": 70,
+    "_reachesComment": "Named in the AI prompt when your radius crosses a border worth mentioning, e.g. \"Basel (Switzerland)\". Omit if it does not.",
+    "_radiusComment": "Onsite and hybrid roles must fall inside this radius. The gazetteer in src/geo.js covers Germany, Switzerland and eastern France; add coordinates there if you live elsewhere.",
+    "_localTermsComment": "Region and neighbour names that mean 'near enough' when a posting location cannot be resolved to coordinates. The city and country are added automatically; list only what they miss.",
+    "localTerms": [
+      "oberbayern",
+      "bayern",
+      "bavaria"
+    ]
+  },
+  "workRights": {
+    "_comment": "Feeds the AI adjudicator so it does not surface roles you cannot legally take. Only `sponsorshipFreeIn` is read.",
+    "citizenship": "XX",
+    "residence": "Describe your right to work, e.g. 'EU citizen' or 'permanent resident'",
+    "sponsorshipFreeIn": [
+      "DE"
+    ]
+  },
+  "languages": {
+    "english": "fluent",
+    "germanLevel": "B1",
+    "germanTarget": "B2",
+    "stretchB2": false,
+    "_stretchComment": "false = a stated B2 requirement is a plain drop. Set true to surface B2 roles in their own Stretch band instead. Postings that never state a requirement are judged on their own merits either way, not on the language they are written in.",
+    "_comment": "Raise germanLevel after an exam and every gap is re-measured — 'conversational' postings promote themselves out of the Stretch band."
+  },
+  "noticePeriodMonths": 3,
+  "salary": {
+    "askingDefault": 70000
+  },
+  "targetTitles": {
+    "_comment": "STRONG = the roles you actually want, each in both engineer and architect form. canonicalTitle() folds developer/entwickler/ingenieur -> engineer, so 'DevOps Developer' and 'Cloud Ingenieur' match too.",
+    "strong": [
+      "devops engineer",
+      "devops architect",
+      "cloud engineer",
+      "cloud architect",
+      "platform engineer",
+      "platform architect",
+      "site reliability engineer",
+      "site reliability architect",
+      "sre"
+    ],
+    "_goodComment": "Near-identical roles posted under a different name. Kept at reduced weight so they surface without competing with the targets above.",
+    "good": [
+      "infrastructure engineer",
+      "infrastructure architect",
+      "cloud infrastructure engineer",
+      "cloud platform engineer",
+      "kubernetes engineer",
+      "kubernetes architect",
+      "devsecops engineer",
+      "cloud operations engineer",
+      "azure engineer",
+      "azure architect",
+      "systems engineer",
+      "reliability engineer"
+    ],
+    "_excludeComment": "Matched as whole words, never substrings — 'intern' will not hit 'International', 'sales' will not hit 'Salesforce'.",
+    "exclude": [
+      "junior",
+      "intern",
+      "internship",
+      "praktikum",
+      "praktikant",
+      "werkstudent",
+      "working student",
+      "ausbildung",
+      "auszubildende",
+      "trainee",
+      "apprentice",
+      "studentische",
+      "duales studium",
+      "bachelor thesis",
+      "masterarbeit",
+      "sales",
+      "recruiter",
+      "account executive",
+      "business development",
+      "technical writer",
+      "account manager",
+      "product manager",
+      "program manager",
+      "customer success",
+      "customer experience",
+      "support engineer",
+      "presales",
+      "pre-sales",
+      "solution engineer",
+      "sales engineer",
+      "data scientist"
+    ]
+  },
+  "_searchQueriesComment": "What the keyword APIs (Adzuna, JSearch, Arbeitsagentur, the agencies, the remote boards) are asked for. Absent, targetTitles.strong is used.",
+  "searchQueries": [
+    "DevOps Engineer",
+    "Site Reliability Engineer",
+    "Platform Engineer",
+    "Cloud Engineer",
+    "DevOps Architect",
+    "Cloud Architect",
+    "Kubernetes"
+  ],
+  "relevance": {
+    "_comment": "The title vocabulary of your field. domainTerms keep a title that matches no target; offTrack drops a title as another specialisation (unless it also names a domain term — then it is a question for the model); nearMissTerms beside a role noun make a title worth asking about; nearMissPatterns are regexes for near misses a word list cannot express; roleDescription names the field in questions to the model.",
+    "roleDescription": "infrastructure / platform / DevOps / SRE / cloud",
+    "domainTerms": [
+      "devops",
+      "sre",
+      "site reliability",
+      "reliability engineer",
+      "platform engineer",
+      "platform team",
+      "infrastructure",
+      "cloud engineer",
+      "cloud architect",
+      "kubernetes",
+      "systems engineer",
+      "sysadmin",
+      "system administrator",
+      "automation engineer",
+      "observability",
+      "ci cd",
+      "release engineer",
+      "build engineer",
+      "devsecops",
+      "cloud operations",
+      "it operations",
+      "cloud engineering",
+      "platform engineering",
+      "devops engineering",
+      "infrastructure engineering",
+      "site reliability engineering",
+      "reliability engineering",
+      "system engineer",
+      "k8s",
+      "kube"
+    ],
+    "offTrack": [
+      "frontend",
+      "front end",
+      "fullstack",
+      "full stack",
+      "mobile",
+      "ios",
+      "android",
+      "game",
+      "unity",
+      "unreal",
+      "ux",
+      "ui designer",
+      "graphic",
+      "qa engineer",
+      "test engineer",
+      "data scientist",
+      "machine learning engineer",
+      "ml engineer",
+      "research scientist",
+      "firmware",
+      "hardware",
+      "mechanical",
+      "electrical",
+      "medical device",
+      "biomedical",
+      "design engineer",
+      "chemist",
+      "pharmacovigilance"
+    ],
+    "_nearMissComment": "Keep generic words such as \"operations\" and \"systems\" OUT of this list: they pulled in \"People Operations Specialist\" and \"Casual Rugby Systems Operator\".",
+    "nearMissTerms": [
+      "cloud",
+      "platform",
+      "infrastructure",
+      "devops",
+      "sre",
+      "site reliability",
+      "kubernetes",
+      "container",
+      "azure",
+      "aws",
+      "gcp",
+      "linux",
+      "virtualization",
+      "datacenter",
+      "data centre",
+      "observability",
+      "automation",
+      "networking",
+      "ci cd",
+      "deployment",
+      "sysadmin",
+      "systems administration",
+      "netzwerk",
+      "plattform",
+      "infrastruktur",
+      "rechenzentrum",
+      "k8s"
+    ],
+    "nearMissPatterns": [
+      "(^|\\s)(it\\s+(administrator|admin)|(network|data\\s+cent(er|re))(\\s+\\w+){0,2}\\s+(engineer|administrator|admin|architect|technician|specialist))($|\\s)"
+    ]
+  },
+  "skills": {
+    "_comment": "What you work with, on two axes at once.\nKIND says what sort of thing a term is (the stack gate that read it as evidence was removed 2026-10-20):\n  tools      — products you can point at. Naming one is checkable.\n  practices  — what those products are used for. Real, but every advert claims them.\n  adjacent   — scored, but NEVER evidence. Role names (\"SRE\", \"platform engineering\")\n               appear in a posting's own title and would just repeat the relevance gate.\n               Programming languages are scored lightly, never wanted for themselves. Domains and outcomes\n               (\"GxP\", \"FinOps\") describe a sector, not the work.\nTIER decides how much a mention is WORTH when scoring: core 3.2, secondary 1.1, nice 0.5.\nThe two axes are independent, which is why this is nested rather than two flat lists —\nthey used to be exactly that, and 40 of 65 terms were duplicated between them.",
+    "tools": {
+      "core": [
+        "azure",
+        "kubernetes",
+        "terraform",
+        "docker",
+        "helm",
+        "ansible",
+        "argocd",
+        "aws",
+        "prometheus",
+        "grafana"
+      ],
+      "secondary": [
+        "azure devops",
+        "github actions",
+        "jenkins",
+        "gitlab",
+        "argo cd",
+        "git",
+        "loki",
+        "thanos",
+        "tempo",
+        "alloy",
+        "opentelemetry",
+        "elasticsearch",
+        "fluentd",
+        "azure monitor",
+        "packer",
+        "arm templates",
+        "opentofu",
+        "linux",
+        "bash",
+        "powershell",
+        "aks",
+        "eks",
+        "container",
+        "nginx",
+        "auth0",
+        "sso",
+        "entra",
+        "active directory",
+        "postgresql",
+        "sql server",
+        "kafka",
+        "trivy",
+        "checkov",
+        "sonarqube",
+        "gitleaks",
+        "vault",
+        "key vault",
+        "waf",
+        "artifactory",
+        "nexus",
+        "bitbucket"
+      ],
+      "nice": [
+        "datadog",
+        "splunk",
+        "elk",
+        "zabbix",
+        "nagios",
+        "istio",
+        "openshift",
+        "pulumi",
+        "crossplane",
+        "flux",
+        "proxmox"
+      ]
+    },
+    "practices": {
+      "core": [
+        "gitops",
+        "ci/cd"
+      ],
+      "secondary": [
+        "observability",
+        "monitoring",
+        "logging",
+        "alerting",
+        "iac",
+        "infrastructure as code",
+        "devsecops",
+        "disaster recovery",
+        "ueberwachung",
+        "automatisierung"
+      ],
+      "nice": []
+    },
+    "adjacent": {
+      "core": [],
+      "secondary": [
+        "sre",
+        "site reliability",
+        "platform engineering",
+        "microservices",
+        "serverless"
+      ],
+      "nice": [
+        "python",
+        "go",
+        "golang",
+        "compliance",
+        "iso 27001",
+        "gxp",
+        "gmp",
+        "cost optimization",
+        "finops",
+        "service mesh"
+      ]
+    }
+  },
+  "domainBonus": {
+    "_comment": "Industries your experience transfers to. Set terms to [] to switch this off.",
+    "terms": [
+      "fintech",
+      "healthcare",
+      "regulated"
+    ],
+    "points": 4
+  },
+  "scoring": {
+    "titleMax": 40,
+    "skillsMax": 30,
+    "locationMax": 20,
+    "freshnessMax": 10,
+    "freshFullDays": 7,
+    "freshZeroDays": 30,
+    "bands": {
+      "strong": 70,
+      "good": 50
+    }
+  },
+  "llm": {
+    "_comment": "LLM adjudication for the postings the rules cannot settle. Rules handle certain keeps and certain drops for free; only genuine ambiguity costs a call. Verdicts are cached by fingerprint, so re-runs are free. With no credentials the pipeline falls back to rules verdicts and says so in the report.",
+    "enabled": true,
+    "_providerComment": "Gemini is the only provider. Leave `providers` null to use the .env value; set it here to override per-project.",
+    "providers": null,
+    "concurrency": 4,
+    "maxCallsPerRun": 300,
+    "_maxCallsComment": "A CIRCUIT BREAKER, not a budget. At ~$0.0003 a call and about 39 calls in a typical run, cost is ~$0.36 a month — the cache absorbs 80% of escalations. 300 is roughly double the busiest real run, so it never fires normally; it exists to stop a gate regression that makes all 6,600 postings uncertain. Nothing is lost when it fires: the overflow defers to data/pending.json and is retried next run, today first."
+  },
+  "avoid": {
+    "_comment": "Hard exclusions on the SHAPE of the role. penaltyNiceToHaveProgramming scores down an advert that mentions coding as a nice-to-have — useful for an operations-leaning role, leave it out for a developer role.",
+    "penaltyNiceToHaveProgramming": -4
+  },
+  "filters": {
+    "excludeRemoteScopes": [
+      "US-only"
+    ],
+    "_excludeEmploymentTypesComment": "Canonical kinds, not source spellings: part-time, contract, internship, temporary. The gate normalises Vollzeit / Full Time / FullTime / Teilzeit / parttime etc. A value offering BOTH (\"Full or part time\") is never excluded.",
+    "excludeEmploymentTypes": [
+      "part-time"
+    ],
+    "minScore": 25,
+    "maxAgeDays": 45
+  }
+}
