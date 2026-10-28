@@ -236,9 +236,15 @@ they differ only in who starts the scans and where you read the results.
 | **the command line** — you start each scan yourself and open the report in your browser | step 6 | step 7 |
 | **the UI** — a tray app that scans on its own and shows the report in its own window | step 7 | step 6 |
 
-You can switch later or use both (see [The command line beside the app](#the-command-line-beside-the-app)).
+**There is no harm in doing both.** Under the hood they are one tool: the same pipeline, the same
+`data/` folder, the same memory of what you have already seen. A job you mark in the app is marked
+for the command line too, and the other way round. Two scans never run at the same time: a second
+one started while the first is running is simply refused, so nothing is overwritten. While the app
+is open it already serves the report, so `npm run serve` says the port is in use — read the report
+in the app's window instead. You can switch later or mix them freely (see
+[The command line beside the app](#the-command-line-beside-the-app)).
 
-### 6. Command line (skip this if you use the app in step 7)
+### 6. Command line (skip this if you use the app in step 7 — no harm in doing both)
 
 ```bash
 npm run dry       # the whole pipeline with per-phase counts, writing nothing
@@ -250,7 +256,7 @@ A full scan takes several minutes and spends API quota. Run `npm run search` a s
 should report **0 new jobs** — that is the memory working. From then on `npm run daily` does
 search-then-serve in one command.
 
-### 7. The background app — the UI (skip this if you use the command line in step 6)
+### 7. The background app — the UI (skip this if you use the command line in step 6 — no harm in doing both)
 
 ```bash
 npm run tray            # start it
