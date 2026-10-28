@@ -222,7 +222,19 @@ npm run keys
 
 One live call per API key and per AI provider, each reported as working or not, with the reason.
 
-### 6. First run
+### Steps 6 and 7: pick ONE way to run it
+
+Steps 6 and 7 are **alternatives, not a sequence**. Both run the same pipeline over the same data;
+they differ only in who starts the scans and where you read the results.
+
+| If you prefer… | Do | Skip |
+|---|---|---|
+| **the command line** — you start each scan yourself and open the report in your browser | step 6 | step 7 |
+| **the UI** — a tray app that scans on its own and shows the report in its own window | step 7 | step 6 |
+
+You can switch later or use both (see [The command line beside the app](#the-command-line-beside-the-app)).
+
+### 6. Command line (skip this if you use the app in step 7)
 
 ```bash
 npm run dry       # the whole pipeline with per-phase counts, writing nothing
@@ -234,7 +246,7 @@ A full scan takes several minutes and spends API quota. Run `npm run search` a s
 should report **0 new jobs** — that is the memory working. From then on `npm run daily` does
 search-then-serve in one command.
 
-### 7. The background app (optional)
+### 7. The background app — the UI (skip this if you use the command line in step 6)
 
 ```bash
 npm run tray            # start it
@@ -242,7 +254,9 @@ npm run tray:shortcut   # a Desktop and Start-menu shortcut for it
 ```
 
 It scans on a schedule, shows the number of open jobs in the tray and on the taskbar, and opens
-the report in its own window. See [The background app](#the-background-app).
+the report in its own window — no terminal needed after this. **Scan now**, **Pause** and
+**Start with Windows** are in the tray menu and on the app's Settings page (starting with Windows
+is off until you tick it). See [The background app](#the-background-app).
 
 ### 8. The application generator (optional, Windows + Word)
 
