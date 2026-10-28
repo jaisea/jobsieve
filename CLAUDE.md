@@ -2,7 +2,7 @@
 
 Guidance for contributors and for Claude Code (claude.ai/code) working in this repository.
 The user-facing documentation is [README.md](README.md); the product requirements are
-[docs/requirements.html](docs/requirements.html). This file is about how the code is built and
+[docs/requirements.md](docs/requirements.md). This file is about how the code is built and
 why — most of the design below exists because a simpler version failed in a measurable way.
 
 jobsieve is a configurable job-search pipeline tuned for the German market (the German-language
@@ -636,7 +636,7 @@ it feel effective. Test that every documented field changes something.
 - **Tests are the specification of intent.** Each names the behaviour it protects and why, not the
   function it calls. `test/docs.test.js` fails if the README's title lists, search terms, relevance
   vocabularies (both example profiles), scripts, data files or test count drift from the code, or
-  if docs/requirements.html's gate count and table drift from `CHECKS`, or if a command is registered in `COMMANDS` without
+  if docs/requirements.md's gate count and table drift from `CHECKS`, or if a command is registered in `COMMANDS` without
   appearing in the help text.
 - **Fail soft, and say so.** A dead source, a spent quota or a missing key degrades the run and is
   reported in the terminal and the report banner. A silent downgrade is a bug.
