@@ -20,6 +20,10 @@ still runs end to end on rules alone and says so in the report.
 
 Repository: <https://github.com/jaisea/jobsieve>
 
+![The Open queue: scored postings with skills, work mode, source and one-click marking](docs/screenshots/open.png)
+
+<sub>All screenshots show invented demo data.</sub>
+
 The requirements it is built to — what it finds, how it decides, what it remembers and what
 it writes — are in [docs/requirements.html](docs/requirements.html). Most rules there carry
 the incident that produced them, so they do not get removed by the next person who reads them.
@@ -258,6 +262,8 @@ the report in its own window — no terminal needed after this. **Scan now**, **
 **Start with Windows** are in the tray menu and on the app's Settings page (starting with Windows
 is off until you tick it). See [The background app](#the-background-app).
 
+![The open-job count on the taskbar icon](docs/screenshots/taskbar-badge.png)
+
 ### 8. The application generator (optional, Windows + Word)
 
 You also need:
@@ -448,6 +454,10 @@ the application date, outcome and salary, and first copies the documents it repl
 replaced. A job you tailored for and then turned down is listed under **Rejected — documents
 kept** and not counted as applied.
 
+![In progress: applications marked interview or offer, with the salary you asked for](docs/screenshots/in-progress.png)
+
+![Applied / Rejected: every application with its storyline, documents and outcome picker](docs/screenshots/applied.png)
+
 ---
 
 ## Commands
@@ -527,6 +537,8 @@ Flags (on PowerShell, call `node src/index.js <command> <flag>` directly):
 `npm run tray` (or the shortcut `npm run tray:shortcut` creates) starts an Electron app that looks
 for new jobs by itself. The report and the log open in the app's own window; links *out of* the
 report open in your browser.
+
+![Settings: start with Windows, quit, and every source switched on or off](docs/screenshots/settings.png)
 
 | Section | What is on it |
 |---|---|
