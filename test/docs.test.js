@@ -52,7 +52,7 @@ test('the public docs carry no personal detail', () => {
   const docs = {
     'README.md': README,
     'CLAUDE.md': CLAUDE,
-    'docs/requirements.html': readFileSync(p('docs', 'requirements.html'), 'utf8'),
+    'docs/requirements.md': readFileSync(p('docs', 'requirements.md'), 'utf8'),
   };
   const leaks = [/\bJaise\b/i, /@gmail/i, /\+49/, /linkedin\.com\/in/i, /realworld one/i,
     /Freiburg/i, /Breisgau/i, /Ausweis/i, /OneDrive/i, /C:\\Users/i];
@@ -260,17 +260,17 @@ test('the requirements document is present and free of personal detail', () => {
   // citizenship and residence status appear only in profile.json. An earlier
   // draft stated the candidate's language level and residence directly; those
   // are configuration, and the document describes them as such.
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
   assert.ok(doc.length > 5000, 'the document should be substantial');
-  assert.match(doc, /<title>/, 'and carry a title');
+  assert.match(doc, /^# /, 'and carry a title');
 
-  const body = doc.replace(/<style[\s\S]*?<\/style>/g, '').replace(/<link[^>]*>/g, '');
+  const body = doc;
   for (const leak of [/\bJaise\b/i, /@gmail/i, /\+49/, /linkedin\.com\/in/i, /realworld one/i,
     /Freiburg/i, /Breisgau/i, /Ausweis/i]) {
     assert.ok(!leak.test(body), `the requirements document must not contain ${leak}`);
   }
 
-  assert.match(readFileSync(p('README.md'), 'utf8'), /docs\/requirements\.html/,
+  assert.match(readFileSync(p('README.md'), 'utf8'), /docs\/requirements\.md/,
     'and the README must point at it, or nobody will find it');
 });
 
@@ -329,9 +329,10 @@ test('the requirements document\'s summary numbers match the config', () => {
   // README's number went stale twice in one day and was caught only because a
   // test read it. These three sit at the top of the document, where they are
   // most likely to be believed and least likely to be re-checked.
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
-  const glance = doc.slice(doc.indexOf('<dl class="glance">'), doc.indexOf('</dl>', doc.indexOf('<dl class="glance">')));
-  const stated = (label) => Number(glance.match(new RegExp(`<dt>${label}</dt><dd>([0-9]+)`))?.[1]);
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
+  // The "At a glance" table near the top: | Sources | 19 |.
+  const glance = doc.slice(doc.indexOf('| At a glance |'), doc.indexOf('\n\n', doc.indexOf('| At a glance |')));
+  const stated = (label) => Number(glance.match(new RegExp(`\\| ${label} \\| ([0-9]+)`))?.[1]);
 
   const enabled = Object.values(sources).filter((v) => v && typeof v === 'object' && 'enabled' in v);
   assert.equal(stated('Sources'), enabled.length,
@@ -353,15 +354,17 @@ test('the requirements document\'s summary numbers match the config', () => {
  * that was wrong was the half anybody actually reads.
  */
 test('the gate table in the requirements lists every gate', () => {
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
   const { CHECKS } = filterModule;
 
   const words = { 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten', 11: 'Eleven', 12: 'Twelve' };
   assert.ok(doc.includes(`${words[CHECKS.length]} checks run in order`),
     `the prose must say ${words[CHECKS.length]}, for ${CHECKS.length} gates`);
 
-  const table = doc.slice(doc.indexOf('<th>Rejects when</th>'), doc.indexOf('</tbody>', doc.indexOf('<th>Rejects when</th>')));
-  const rows = (table.match(/<tr>/g) || []).length;
+  // The Markdown table whose header names "Rejects when": header, rule, then one row per gate.
+  const start = doc.indexOf('| Rejects when |');
+  const table = doc.slice(start, doc.indexOf('\n\n', start)).split('\n');
+  const rows = table.length - 2;
   assert.equal(rows, CHECKS.length, `the table has ${rows} rows for ${CHECKS.length} gates`);
 });
 
@@ -402,8 +405,8 @@ test('the README does not still advertise a provider chain', () => {
 const WORDS = { 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten', 30: 'thirty' };
 
 test('the requirements document states no fact the code contradicts', () => {
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
-  const prose = doc.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
+  const prose = doc.replace(/[*_`|>#]/g, ' ').replace(/\s+/g, ' ');
   const lower = prose.toLowerCase();
 
   // Runtime dependencies. Said "Three" while package.json had two, for five
@@ -439,8 +442,9 @@ test('the requirements document states no fact the code contradicts', () => {
 test('every requirement carries an id, and no id is used twice', () => {
   // Ids are cited in commit messages and in review. A duplicate makes one of
   // those citations point at the wrong requirement, silently.
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
-  const ids = [...doc.matchAll(/<span class="rid">([^<]+)<\/span>/g)].map((m) => m[1]);
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
+  // Each requirement is a list item that opens with its id in bold: "- **F1** · …".
+  const ids = [...doc.matchAll(/^- \*\*([A-Z]+\d+[a-z]?)\*\* · /gm)].map((m) => m[1]);
   assert.ok(ids.length > 50, 'the document should still be a list of requirements');
 
   const seen = new Set();

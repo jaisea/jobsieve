@@ -82,8 +82,8 @@ test('what gets saved is the real prompt, not a stub', () => {
 });
 
 test('the requirements no longer promise more than the folder holds', () => {
-  const doc = readFileSync(p('docs', 'requirements.html'), 'utf8');
-  const a8 = doc.slice(doc.indexOf('>A8<'), doc.indexOf('>A8<') + 400);
+  const doc = readFileSync(p('docs', 'requirements.md'), 'utf8');
+  const a8 = doc.slice(doc.indexOf('**A8**'), doc.indexOf('**A8**') + 400);
   assert.match(a8, /sent/i, 'A8 still claims the prompt is kept');
   // And the claim is now backed by a file, not by prose.
   assert.ok(APPLY.includes("'prompts.json'"), 'so prompts.json must exist to back it');

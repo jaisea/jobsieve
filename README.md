@@ -28,9 +28,10 @@ Repository: <https://github.com/jaisea/jobsieve>
 
 <sub>All screenshots show invented demo data.</sub>
 
-The requirements it is built to — what it finds, how it decides, what it remembers and what
-it writes — are in [docs/requirements.html](docs/requirements.html). Most rules there carry
-the incident that produced them, so they do not get removed by the next person who reads them.
+**Requirements:** what jobsieve is built to do — what it finds, how it decides, what it
+remembers and what it writes — is in **[docs/requirements.md](docs/requirements.md)**, one
+numbered requirement per line with the reason behind it. Most reasons cite the incident that
+produced the rule, so it does not get removed by the next person who reads it.
 
 ---
 
