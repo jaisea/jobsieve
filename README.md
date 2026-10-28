@@ -7,6 +7,10 @@ filters and scores every posting against a profile you control; **never shows yo
 job twice**; and writes an HTML report with Apply links and one-click status marking. For the
 postings you choose, it can write a tailored CV and cover letter through Microsoft Word.
 
+**Use it as a desktop app** (recommended): it starts with Windows, scans on its own schedule,
+shows the open-job count on the taskbar, and does everything from one window. The same pipeline
+and the same page are also available from the command line, for running without the app.
+
 Nothing in the code assumes a field. What you are looking for — target titles, search terms, the
 vocabulary that says a title belongs to your field, your skills — lives in your profile. Two
 example profiles ship with it: a **full-stack web engineer** (`config/profile.example.json`, the
@@ -19,6 +23,10 @@ minority goes to a language model (Google Gemini) — and with no model configur
 still runs end to end on rules alone and says so in the report.
 
 Repository: <https://github.com/jaisea/jobsieve>
+
+![The Open queue: scored postings with skills, work mode, source and one-click marking](docs/screenshots/open.png)
+
+<sub>All screenshots show invented demo data.</sub>
 
 The requirements it is built to — what it finds, how it decides, what it remembers and what
 it writes — are in [docs/requirements.html](docs/requirements.html). Most rules there carry
@@ -222,27 +230,61 @@ npm run keys
 
 One live call per API key and per AI provider, each reported as working or not, with the reason.
 
-### 6. First run
+### Steps 6 and 7: the app is the recommended way to run it
+
+**Use the app (step 6).** It is the way jobsieve is meant to be used: with *Start with Windows*
+ticked it starts at login, scans every source on its own schedule, keeps the open-job count on the
+taskbar, and its window always shows every open job — you never type a command again.
+
+**The app and the web page are the same UI.** The app's window *is* the report page that
+`npm run serve` opens in a browser — same tabs, same cards, same buttons. The app adds what a
+browser tab cannot: scans on a schedule, the tray and taskbar count, notifications, and the
+*Scan now* / *Pause* / *Start with Windows* controls. So there is nothing you can do in the browser
+that you cannot do in the app.
+
+**The command line (step 7) is optional** — for running without the app (a server, a scheduled
+task, another OS), for scripting, and for development. Skip it if you use the app.
+
+| You want… | Do | Skip |
+|---|---|---|
+| **the app — recommended.** Scans by itself, shows everything in its own window | step 6 | step 7 |
+| **the command line only.** You start each scan and open the report in a browser | step 7 | step 6 |
+
+**There is no harm in doing both.** Under the hood they are one tool: the same pipeline, the same
+`data/` folder, the same memory of what you have already seen. A job you mark in the app is marked
+for the command line too, and the other way round. Two scans never run at the same time: a second
+one started while the first is running is simply refused, so nothing is overwritten. While the app
+is open it already serves the report, so `npm run serve` says the port is in use — read the report
+in the app's window instead. You can switch later or mix them freely (see
+[The command line beside the app](#the-command-line-beside-the-app)).
+
+### 6. The app — recommended
+
+```bash
+npm run tray:shortcut   # once: a jobsieve shortcut on the Desktop and in the Start menu
+npm run tray            # start it (or double-click the shortcut)
+```
+
+Then, in the app, open **Settings** and tick **Start with Windows** (it is off until you do). From
+now on there is nothing to run: the app starts in the tray at login, scans every source on its own
+schedule (the first scan starts within seconds of launch and takes a few minutes), and shows the number of
+open jobs on the taskbar. Click the tray icon to open the window — it is the whole UI: review,
+mark, add a job, audit the filter, tailor an application. **Scan now** and **Pause** are in the
+tray menu and at the top of the Open tab. See [The background app](#the-background-app).
+
+![The open-job count on the taskbar icon](docs/screenshots/taskbar-badge.png)
+
+### 7. The command line — optional (skip this if you use the app — no harm in doing both)
 
 ```bash
 npm run dry       # the whole pipeline with per-phase counts, writing nothing
 npm run search    # a real scan: fetch, judge, remember, write reports/latest.html
-npm run serve     # open the report with working buttons on http://127.0.0.1:8787
+npm run serve     # the same UI as the app, in your browser, on http://127.0.0.1:8787
 ```
 
 A full scan takes several minutes and spends API quota. Run `npm run search` a second time: it
 should report **0 new jobs** — that is the memory working. From then on `npm run daily` does
 search-then-serve in one command.
-
-### 7. The background app (optional)
-
-```bash
-npm run tray            # start it
-npm run tray:shortcut   # a Desktop and Start-menu shortcut for it
-```
-
-It scans on a schedule, shows the number of open jobs in the tray and on the taskbar, and opens
-the report in its own window. See [The background app](#the-background-app).
 
 ### 8. The application generator (optional, Windows + Word)
 
@@ -290,15 +332,25 @@ only decide when they are certain.
 
 ## Daily use
 
+**With the app (recommended) there is nothing to start.** With *Start with Windows* ticked it is
+already running in the tray, has already scanned, and its **Open** tab shows every open job. Open
+the window from the tray and work through steps 2–5 below with the buttons on the page. Step 1 is
+done for you, and **every `npm run` command in this section is for terminal use only** — with the
+app you can ignore them. (The page is the same in the app and in a browser, so the descriptions of
+tabs and buttons below apply to both.)
+
+**Terminal only:**
+
 ```bash
 npm run daily
 ```
 
-Runs the search, then opens the report with working buttons. It is a real command rather than
-two chained scripts, so every `search` flag reaches it (`node src/index.js daily --verbose`).
-Or run the [background app](#the-background-app), which fetches on a schedule by itself.
+Runs the search, then opens the same UI in your browser with working buttons. It is a real command
+rather than two chained scripts, so every `search` flag reaches it (`node src/index.js daily --verbose`).
 
-### 1. Fetch
+### 1. Fetch — the app does this by itself
+
+From the terminal:
 
 ```bash
 npm run search
@@ -313,11 +365,15 @@ is the memory working.
 
 ### 2. Review
 
+**In the app:** open the window from the tray; you are on the **Open** tab.
+
+**From the terminal:**
+
 ```bash
 npm run serve
 ```
 
-Opens the report with **working buttons** on `http://127.0.0.1:8787`. A report opened from
+Opens the same page with **working buttons** on `http://127.0.0.1:8787`. A report opened from
 disk cannot write back, so there its buttons copy the equivalent command to the clipboard.
 
 On each card: **Applied**, **Interested**, **Not for me**. `applied` and `rejected` retire a job
@@ -360,7 +416,7 @@ it, and re-adding never wipes an advert you already pasted.
 
 The **Discarded** tab (and `reports/rejections.html`, or `/rejections` when served) lists what
 the gates threw away, grouped by reason, judgement calls first. When something should have
-passed:
+passed, the terminal can explain exactly why (this one has no button):
 
 ```bash
 npm run why -- "the job title"
@@ -383,7 +439,7 @@ gates did. Without the server, `npm run apply -- <id>` works on the id directly.
 
 ### 5. Apply — a tailored CV and cover letter
 
-Click **Tailor application** on a card while the report is served, or:
+Click **Tailor application** on a card in the app (or on the served page), or from the terminal:
 
 ```bash
 npm run apply -- <id>
@@ -426,6 +482,10 @@ Rejected** holds the rest. An application not promoted within **30 days** is fol
 finished whether the refusal arrived in writing or never came. Nothing is deleted, and
 promoting an archived application moves it straight back.
 
+An interview or offer never ages out, so when one **ends**, set its outcome to **not hired**
+(they said no) or **declined** (you said no). It leaves In progress and is back under *Applied*
+with that outcome on the row, and folds into *Archived* with age like any other application.
+
 Every application shows its **Job description** (the `job.md` saved on the day). Applications
 with documents have **Open Docs**; an open job that has documents shows **Open Docs** and
 **Regenerate** in place of *Tailor application*. Regenerate writes into the same folder, keeps
@@ -433,6 +493,10 @@ the application date, outcome and salary, and first copies the documents it repl
 `.generation/previous/<time>/` — if a document is open in Word the copy fails and nothing is
 replaced. A job you tailored for and then turned down is listed under **Rejected — documents
 kept** and not counted as applied.
+
+![In progress: applications marked interview or offer, with the salary you asked for](docs/screenshots/in-progress.png)
+
+![Applied / Rejected: every application with its storyline, documents and outcome picker](docs/screenshots/applied.png)
 
 ---
 
@@ -510,14 +574,18 @@ Flags (on PowerShell, call `node src/index.js <command> <flag>` directly):
 
 ## The background app
 
-`npm run tray` (or the shortcut `npm run tray:shortcut` creates) starts an Electron app that looks
-for new jobs by itself. The report and the log open in the app's own window; links *out of* the
-report open in your browser.
+**This is the recommended way to use jobsieve.** `npm run tray` (or the shortcut
+`npm run tray:shortcut` creates) starts an Electron app that looks for new jobs by itself. The
+report and the log open in the app's own window — the same page `npm run serve` shows in a browser,
+plus the app's controls; links *out of* the report open in your browser. Tick **Start with
+Windows** in Settings and it is always running.
+
+![Settings: start with Windows, quit, and every source switched on or off](docs/screenshots/settings.png)
 
 | Section | What is on it |
 |---|---|
 | **Open** `(n)` | Scan now / pause / log controls, the add-a-job form, the queue with filter and sort, and postings still waiting for their advert |
-| **In progress** `(n)` | Applications marked interview or offer |
+| **In progress** `(n)` | Applications marked interview or offer; mark one **not hired** or **declined** when it ends and it returns to Applied |
 | **Applied / Rejected** | Applications (with *Archived* folded), tailored-then-turned-down jobs, what you turned down in the last 30 days with **Restore**, and *What you rewrote* |
 | **Discarded** | What the filters threw away, for the periodic audit |
 | **Log** | Scan history and the live output of a running scan |

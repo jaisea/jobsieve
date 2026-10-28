@@ -699,7 +699,18 @@ export function setOutcome(folder, outcome) {
  * label with no consequence attached.
  *
  * `applied` stays as the default every application already has. What is left is
- * the two promotions you would actually bother to record.
+ * the two promotions you would actually bother to record — and the two ways one
+ * of them ENDS.
+ *
+ * `unsuccessful` (they said no) and `declined` (you said no) exist because an
+ * interview or an offer never ages out: something you are still in beats the
+ * calendar, so without an end state it sat on In progress for ever after the
+ * process was over. Setting one returns the application to Applied, with the
+ * outcome on the row, where age folds it away like any other. They are NOT an
+ * answer to silence — age still answers that, and there is still no "rejected"
+ * for an application nobody replied to. The word is avoided on purpose: a job
+ * STATUS of `rejected` already means you turned the posting down, and the page
+ * groups on both fields.
  */
-export const OUTCOMES = ['applied', 'interview', 'offer'];
+export const OUTCOMES = ['applied', 'interview', 'offer', 'unsuccessful', 'declined'];
 export const __testables = { folderFor, overlap };

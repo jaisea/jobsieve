@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import { ROOT } from '../util.js';
 
 /**
- * `npm run tray:shortcut` — a "Job Hunt" shortcut on the Desktop and in the Start
+ * `npm run tray:shortcut` — a "jobsieve" shortcut on the Desktop and in the Start
  * menu, so the app starts with a double-click and no terminal.
  *
  * The target is electron.exe itself, which is a windowed program and so opens no
@@ -30,13 +30,13 @@ $ErrorActionPreference = 'Stop'
 $targets = if ($env:JH_ONLY) { @($env:JH_ONLY) } else { @([Environment]::GetFolderPath('Desktop'), [Environment]::GetFolderPath('Programs')) }
 $shell = New-Object -ComObject WScript.Shell
 foreach ($dir in $targets) {
-  $lnk = Join-Path $dir 'Job Hunt.lnk'
+  $lnk = Join-Path $dir 'jobsieve.lnk'
   $s = $shell.CreateShortcut($lnk)
   $s.TargetPath = $env:JH_EXE
   $s.Arguments = '"' + $env:JH_MAIN + '"'
   $s.WorkingDirectory = $env:JH_ROOT
   $s.IconLocation = $env:JH_EXE + ',0'
-  $s.Description = 'Job Hunt - scans in the background, open-job count in the tray'
+  $s.Description = 'jobsieve - scans in the background, open-job count in the tray'
   $s.Save()
   Write-Output $lnk
 }`;

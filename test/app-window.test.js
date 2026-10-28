@@ -96,7 +96,7 @@ test('Windows start hides the window; a launch by hand shows it', () => {
 
 test('the count rides on the taskbar button too, and clears at zero', () => {
   assert.match(main, /win\.setOverlayIcon\(\s*tone === 'idle' \? null :/);
-  assert.match(main, /win\.setTitle\(`Job Hunt — /);
+  assert.match(main, /win\.setTitle\(`jobsieve — /);
 });
 
 test('the taskbar badge is a red circle, like a messaging app\'s unread count', () => {

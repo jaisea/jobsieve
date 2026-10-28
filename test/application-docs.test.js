@@ -302,6 +302,8 @@ test('a job tailored and then turned down is kept with its documents, but not co
     { folder: 'sent', at: day(2), status: 'applied' },
     { folder: 'sent-long-ago', at: day(60), status: 'applied' },
     { folder: 'interviewing', at: day(2), status: 'applied', outcome: 'interview' },
+    { folder: 'interviewed-not-hired', at: day(3), status: 'applied', outcome: 'unsuccessful' },
+    { folder: 'offer-declined-long-ago', at: day(60), status: 'applied', outcome: 'declined' },
     { folder: 'abandoned', at: day(5), status: 'rejected', rejectedReason: 'closed' },
     { folder: 'abandoned-after-interview-mark', at: day(5), status: 'rejected', outcome: 'interview' },
     { folder: 'no-status-recorded', at: day(2) },
@@ -320,8 +322,10 @@ test('a job tailored and then turned down is kept with its documents, but not co
   for (const open of ['tailored-still-open', 'tailored-and-liked', 'brand-new']) {
     assert.ok(!everywhere.includes(open), `${open} stays off the Applied page`);
   }
-  assert.deepEqual(names(out.applied), ['sent', 'no-status-recorded']);
-  assert.deepEqual(names(out.archived), ['sent-long-ago']);
+  assert.deepEqual(names(out.applied), ['sent', 'interviewed-not-hired', 'no-status-recorded'],
+    'an interview that ended is back on Applied, not stuck on In progress');
+  assert.deepEqual(names(out.archived), ['sent-long-ago', 'offer-declined-long-ago'],
+    'and age folds it away like any other application');
   assert.deepEqual(names(out.progressing), ['interviewing']);
 });
 

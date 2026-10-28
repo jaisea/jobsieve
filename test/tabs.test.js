@@ -93,7 +93,7 @@ test('Settings holds the app\'s own options, the source switches, the watchlist 
     assert.ok(settings.includes(`id="${id}"`), `#${id}`);
   }
   assert.match(settings, /Start with Windows/);
-  assert.match(settings, /Quit Job Hunt/);
+  assert.match(settings, /Quit jobsieve/);
   assert.match(settings, /1 warning\(s\) from the last scan/);
   assert.match(settings, /Adzuna: skipped/);
   assert.ok(settings.indexOf('id="setbox"') < settings.indexOf('id="srcbox"'), 'the app\'s options come first');
